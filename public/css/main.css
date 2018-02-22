@@ -1,0 +1,14 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900");
+.hero {
+  background: url("https://static.pexels.com/photos/685534/pexels-photo-685534.jpeg") no-repeat center center;
+  padding: 30vh 0; }
+
+.navbar {
+  background-color: white; }
+
+.welcome {
+  padding: 10vh 0; }
+
+.footer {
+  background-color: black;
+  color: white; }
