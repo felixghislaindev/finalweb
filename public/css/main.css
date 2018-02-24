@@ -3,6 +3,10 @@
   background: url("https://static.pexels.com/photos/685534/pexels-photo-685534.jpeg") no-repeat center center;
   padding: 30vh 0; }
 
+.about-hero {
+  background: url("https://static.pexels.com/photos/685531/pexels-photo-685531.jpeg") no-repeat center center;
+  padding: 30vh 0; }
+
 .navbar {
   background-color: white; }
 
@@ -11,4 +15,11 @@
 
 .footer {
   background-color: black;
-  color: white; }
+  color: white;
+  padding-top: 30vh 0; }
+
+.about-section-1 {
+  padding-top: 5vh; }
+
+.our-team {
+  padding: 5vh 0; }
