@@ -7,6 +7,10 @@
   background: url("https://static.pexels.com/photos/685531/pexels-photo-685531.jpeg") no-repeat center center;
   padding: 30vh 0; }
 
+.contact-hero {
+  background: url("https://static.pexels.com/photos/791765/pexels-photo-791765.jpeg") no-repeat center center;
+  padding: 30vh 0; }
+
 .navbar {
   background-color: white; }
 
@@ -23,3 +27,8 @@
 
 .our-team {
   padding: 5vh 0; }
+
+.connect {
+  height: 20px;
+  background-color: aqua;
+  padding: 10vh 0; }
