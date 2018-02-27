@@ -1,0 +1,25 @@
+// cms colors
+$headercolor:#333333;
+$defaulttext: #ffffff;
+
+// header
+#header{
+    background-color: $headercolor;
+    color: $defaulttext;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+// breadcrumbs
+.breadcrumb{
+    background-color: #cccccc;
+    color: $headercolor;
+    
+}
+.breadcrumb ol{
+    
+       list-style-type: none;
+    
+}
+.sales{
+    background-color: yellowgreen;
+}

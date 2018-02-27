@@ -35,6 +35,11 @@ app.get("/about",  function(req, res){
     res.render("classes");
   });
 
+  // define rout for content management 
+  app.get("/cms", function(req,res){
+    res.render("cms");
+  });
+
 
 app.listen( 3000, function () {
   console.log("server is on!!");
