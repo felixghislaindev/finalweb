@@ -48,3 +48,44 @@
 
 .sales {
   background-color: yellowgreen; }
+
+.login-form {
+  padding-top: 10%; }
+
+.login-box {
+  background-color: #fff;
+  padding: 50px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px rgba(0, 0, 0, 0.19); }
+
+.head-text {
+  color: #333333;
+  padding-bottom: 5px; }
+
+.frm-imput {
+  margin-bottom: 50px;
+  border: 0;
+  border-radius: 0;
+  border-bottom: 1px solid #333333;
+  -webkit-transition: all 0.6s;
+  transition: all 0.6s; }
+
+input[type="text"], input[type="text"]:focus {
+  outline: 0;
+  border-color: #333333;
+  box-shadow: none; }
+
+input[type="password"], input[type="password"]:focus {
+  outline: 0;
+  border-color: #333333;
+  box-shadow: none; }
+
+.btn-login {
+  border-radius: 0;
+  background: #333333;
+  color: #fff;
+  -webkit-transition: all 0.7s;
+  transition: all 0.7s; }
+  .btn-login :hover {
+    background: transparent;
+    border: 1px solid #fff;
+    color: #fff; }

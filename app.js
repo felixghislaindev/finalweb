@@ -40,6 +40,11 @@ app.get("/about",  function(req, res){
     res.render("cms");
   });
 
+  // define route for cms login page
+  app.get("/login", function(req,res){
+    res.render("login");
+  });
+
 
 app.listen( 3000, function () {
   console.log("server is on!!");
