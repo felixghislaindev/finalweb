@@ -45,6 +45,41 @@ app.get("/about",  function(req, res){
     res.render("login");
   });
 
+    // define route for cms blog page
+    app.get("/cmsblog", function(req,res){
+      res.render("cmsblog");
+    });
+
+    // define route for cms blog page
+    app.get("/newblog", function(req,res){
+      res.render("newblog");
+    });
+    // define route for cms blog page
+    app.get("/showblog", function(req,res){
+      res.render("showblog");
+    });
+
+
+     // define route for cms store page
+     app.get("/cmsstore", function(req,res){
+      res.render("cmsstore");
+    });
+     // define route for cms store page
+     app.get("/cmsnewprod", function(req,res){
+      res.render("cmsnewprod");
+    });
+
+     // define route for cms store page
+     app.get("/cmsviewprod", function(req,res){
+      res.render("cmsviewprod");
+    });
+
+     // define route for cms user page
+     app.get("/cmsuser", function(req,res){
+      res.render("cmsuser");
+    });
+
+
 
 app.listen( 3000, function () {
   console.log("server is on!!");
