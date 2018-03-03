@@ -96,3 +96,17 @@ input[type="password"], input[type="password"]:focus {
     background: transparent;
     border: 1px solid #fff;
     color: #fff; }
+
+.card-img {
+  background-color: rgba(0, 0, 0, 0.5); }
+
+#class-h {
+  line-height: 0; }
+
+#class-p {
+  background-color: #EA2027;
+  width: 90px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 12px;
+  display: inline-block; }

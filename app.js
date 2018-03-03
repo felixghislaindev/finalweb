@@ -30,10 +30,16 @@ app.get("/about",  function(req, res){
     res.render("contact");
   });
 
-   //define the contact page route
+   //show all the classes
    app.get("/classes",  function(req, res){
     res.render("classes");
   });
+
+  // show a class 
+  app.get("/showclass", function(req,res){
+    res.render("showclass");
+  })
+
 
   // define rout for content management 
   app.get("/cms", function(req,res){

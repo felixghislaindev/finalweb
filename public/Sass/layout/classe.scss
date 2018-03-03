@@ -1,0 +1,17 @@
+
+$cardred:#EA2027;
+.card-img{
+        background-color: rgba(0, 0, 0, 0.5);
+}
+
+#class-h{
+        line-height: 0;
+}
+#class-p{
+        background-color: $cardred;
+        width: 90px;
+        text-align: center;
+        font-weight: bold;
+        font-size: 12px;
+        display: inline-block;
+}
