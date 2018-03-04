@@ -1,6 +1,17 @@
+$footerbg:#192a56;
+$spanbg:#EA2027;
+
 .footer{
-    background-color: black;
+    background-color: $footerbg;
     color: white;
-    padding-top: 30vh 0;
-    
+    margin-top: 50px;
+    padding-top: 50px;
+    height: 25vh;
+}
+.footer-nav ul{
+    list-style-type: none;
+}
+.footer-nav span{
+    padding-left: 10px;
+   
 }
