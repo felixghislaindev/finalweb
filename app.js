@@ -85,6 +85,16 @@ app.get("/about",  function(req, res){
       res.render("cmsuser");
     });
 
+    // defines the routes for the blog page
+    
+    app.get("/blog", function(req,res){
+      res.render("blog");
+    })
+
+    // define routes for the store page
+    app.get("/store", function(req,res){
+      res.render("store");
+    })
 
 
 app.listen( 3000, function () {
