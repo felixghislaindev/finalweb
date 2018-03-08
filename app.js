@@ -2,10 +2,15 @@ var express = require("express"),
 app = express(),
 http = require('http'),
 request = require("request"),
-bodyparser = require("body-parser");
+bodyparser = require("body-parser"),
+mongoose = require("mongoose");
+Class = require("./models/class");
+
+  
 
 
-// connecting to mongodb
+// connecting to the database 
+mongoose.connect("mongodb://localhost/rage-fitness");
 
 app.set("view engine", "ejs");
 app.use(express.static("public"));
@@ -33,6 +38,7 @@ app.get("/about",  function(req, res){
    //show all the classes
    app.get("/classes",  function(req, res){
     res.render("classes");
+
   });
 
   // show a class 
@@ -49,11 +55,42 @@ app.get("/about",  function(req, res){
   // define route for cms login page
   app.get("/login", function(req,res){
     res.render("login");
-  });
+  }); 
 
     // define route for cms blog page
     app.get("/cmsblog", function(req,res){
       res.render("cmsblog");
+    }); 
+    
+    app.get("/cmsclass", function(req, res){
+
+      res.render("cmsclass");
+    });
+
+    app.get("/newclass", function(req,res){
+      res.render("newclass");
+    })
+    app.post("/newclass", function(req,res){
+      var className = req.body.classname;
+      var classType = req.body.classtype;
+      var classImage = req.body.classimage;
+      var classDescription = req.body.classdescription;
+      var newclass = {className:className, classType:classType, classImage:classImage,
+                      classDescription:classDescription}
+      Class.create(newclass, function(err,newclass){
+                    if(err){
+                      console.log("Data has not been store");
+                    } else {
+                      console.log("sucess");
+                    }
+      });
+      
+     
+    });
+   
+
+    app.get("/editclass", function(req,res){
+      res.render("editclass");
     });
 
     // define route for cms blog page
