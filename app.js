@@ -7,7 +7,10 @@ mongoose = require("mongoose");
 Class = require("./models/class");
 
   
+// require routes
 
+var classeRoutes= require(".routes/class"),
+    cmsRoutes = require("./routes/cms");
 
 // connecting to the database 
 mongoose.connect("mongodb://localhost/rage-fitness");
@@ -37,7 +40,13 @@ app.get("/about",  function(req, res){
 
    //show all the classes
    app.get("/classes",  function(req, res){
-    res.render("classes");
+    Class.find({}, function(err,foundclasses){
+      if(err){
+        console.log("not found");
+      }else {
+       res.render("classes", {foundclasses : foundclasses});
+      }
+    })
 
   });
 
@@ -64,11 +73,18 @@ app.get("/about",  function(req, res){
     
     app.get("/cmsclass", function(req, res){
 
-      res.render("cmsclass");
+      Class.find({}, function(err,foundclasses){
+        if(err){
+          console.log("not found");
+        }else {
+         res.render("cmsclass", {foundclasses : foundclasses});
+        }
+      })
     });
 
     app.get("/newclass", function(req,res){
-      res.render("newclass");
+    res.render("newclass");
+      
     })
     app.post("/newclass", function(req,res){
       var className = req.body.classname;
@@ -133,6 +149,7 @@ app.get("/about",  function(req, res){
       res.render("store");
     })
 
+    
 
 app.listen( 3000, function () {
   console.log("server is on!!");

@@ -38,52 +38,37 @@
                         <div class="col-xl-3 col-lg-3 col-md-43 col-sm-6 mb-4">
                                 <ul class="list-group">
                                         <li class="list-group-item"><a class="nav-link" href="/newclass">ADD NEW POST</a></li>
-                                        <li class="list-group-item"><a class="nav-link" href="/editclass">VIEW/EDIT POST</a></li>
+                                        
                                       
                                       </ul>
                         </div>
                     
-                      
-                      <div class="col-xl-3 col-lg-3 col-md-43 col-sm-6 mb-4">
-                        <div class="card card-statistics">
-                          <div class="card-body">
-                            <div class="clearfix">
-                              <div class="float-left">
-                                <h4 class="text-success">
-                                        <i class="fas fa-rss"></i>
-                                </h4>
-                              </div>
-                              <div class="float-right">
-                                <p class="card-text text-dark">CLASSES</p>
-                                <h4 class="bold-text">2</h4>
-                              </div>
+                     
+                        
+                          <div class="col-xl-9 col-lg-9 col-md-43 col-sm-6 mb-4">
+                            <div class="row">
+                                <%for(var i = 0; i < foundclasses.length;i++){%>
+                                <div class="col-xl-3 col-lg-3 col-md-43 col-sm-6 mb-4">
+                                    <div class="card">
+                                        <img src="<%= foundclasses[i].classImage%>" class = "card-img img-fluid" alt="">
+                                        <div class="card-img-overlay text-white">
+                                                
+                                                <h4 id="class-h" class="card-title"><%= foundclasses[i].className%></h4>
+                                                <p id= "class-p"class="card-text"><%= foundclasses[i].classType%></p> 
+                                        </div>
+                                       
+                                    </div>
+                                    <a class="text-danger" href="/editclass">VIEW/EDIT POST</a>
                             </div>
-                           
-                          </div>
+                             
+                              <%}%> 
                         </div>
                       </div>
-                      <div class="col-xl-3 col-lg-3 col-md-43 col-sm-6 mb-4">
-                            <div class="card card-statistics">
-                              <div class="card-body">
-                                <div class="clearfix">
-                                  <div class="float-left">
-                                    <h4 class="text-success">
-                                            <i class="fas fa-rss"></i>
-                                    </h4>
-                                  </div>
-                                  <div class="float-right">
-                                    <p class="card-text text-dark">USER</p>
-                                    <h4 class="bold-text">2</h4>
-                                  </div>
-                                </div>
-                               
-                              </div>
-                            </div>
-                          </div>
+                   
                       
                    
                     </div>
-      </div>
+    
       
           
        
