@@ -9,8 +9,7 @@ Class = require("./models/class");
   
 // require routes
 
-var classeRoutes= require(".routes/class"),
-    cmsRoutes = require("./routes/cms");
+
 
 // connecting to the database 
 mongoose.connect("mongodb://localhost/rage-fitness");
@@ -44,17 +43,25 @@ app.get("/about",  function(req, res){
       if(err){
         console.log("not found");
       }else {
-       res.render("classes", {foundclasses : foundclasses});
+       res.render("class", {foundclasses : foundclasses});
       }
     })
 
   });
 
   // show a class 
-  app.get("/showclass", function(req,res){
-    res.render("showclass");
-  })
 
+app.get("/classes/:id", function(req,res){
+  Class.findById(req.params.id, function(err,foundclass){
+    if(err){
+      console.log(err);
+    } else {
+      console.log(foundclass);
+      res.render("showclass", {foundclass:foundclass});
+    }
+  });
+        
+}); 
 
   // define rout for content management 
   app.get("/cms", function(req,res){
@@ -71,6 +78,7 @@ app.get("/about",  function(req, res){
       res.render("cmsblog");
     }); 
     
+    //Show classes in cms
     app.get("/cmsclass", function(req, res){
 
       Class.find({}, function(err,foundclasses){
@@ -82,6 +90,7 @@ app.get("/about",  function(req, res){
       })
     });
 
+    // CREATE NEWS CLASS 
     app.get("/newclass", function(req,res){
     res.render("newclass");
       

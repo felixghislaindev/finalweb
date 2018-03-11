@@ -1,5 +1,5 @@
-<%include partials/header%>
-<%include partials/nav%>
+<%include ./partials/header%>
+<%include ./partials/nav%>
 
 
 <section class="class-welcome">
@@ -21,7 +21,7 @@
                                 
                                 
                                 <p id= "class-p"class="card-text"><%= foundclasses[i].classType%></p> 
-                                 <a href="#" class="text-white"><h4 id="class-h" class="card-title"><%= foundclasses[i].className%></h4></a>
+                                 <a href="/classes/<%=foundclasses[i]._id%>" class="text-white"><h4 id="class-h" class="card-title"><%= foundclasses[i].className%></h4></a>
                         </div>
                        
                     </div>
@@ -43,6 +43,6 @@
 
 
 
-<%include partials/footer%>
+<%include ./partials/footer%>
 
 
