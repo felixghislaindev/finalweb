@@ -1,6 +1,6 @@
-<%include partials/header%>
+<%include ../partials/header%>
 
-<%include partials/cmsnav%>
+<%include ../partials/cmsnav%>
 
 <section id="header">
     <div class="container">
@@ -54,6 +54,42 @@
                             <input type="text" class="form-control" name = "classdescription" placeholder="Product Size">
                             
                     </div>
+                    <div class="col-md-12">
+                            <label for="comment">Class Info:</label>
+                            <textarea type="text" class="form-control" name = "classInfo" placeholder="Product Size">
+                                </textarea>
+                            
+                    </div>
+                    <div class="col-md-12">
+                        <label for="comment">Class Day:</label>
+                        <select name="classday" class="custom-select">
+                            <option value="Monday">Monday</option>
+                            <option value="Tuesday">Tuesday</option>
+                            <option value="Wenesday">Wenesday</option>
+                            <option value="Thursaday">Thursaday</option>
+                            <option value="Friday">Friday</option>
+                            <option value="Saturday">Saturday</option>
+                            <option value="Sunday">Sunday</option>
+                          </select>
+                        
+                </div>
+                <div class="col-md-12">
+                        <label for="comment">Class Start Time:</label>
+                        <input type="text" class="form-control" name = "classStartTime" placeholder="">
+                            
+                        
+                </div>
+                <div class="col-md-12">
+                        <label for="comment">Class Start Time:</label>
+                        <input type="text" class="form-control" name = "classEndTime" placeholder="">
+                            
+                        
+                </div>
+
+
+               
+            
+
                     <button class=" btn btn-lg btn-block">SUBMIT</button>
                     
                 </form>

@@ -1,5 +1,5 @@
-<%include partials/header%>
-<%include partials/nav%>
+<%include ../partials/header%>
+<%include ../partials/nav%>
 
 <!-- class image display -->
 <section class="main-img sho-content">
@@ -15,19 +15,15 @@
             <div class="col-md-7">
                    
                 <h2><%=foundclass.className%></h2> 
-                <p class="">Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus libero, faucibus adipiscing, commodo quis, gravida id, est. Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at felis. Vestibulum volutpat, lacus a ultrices sagittis, mi neque euismod dui, eu pulvinar nunc sapien ornare nisl. Phasellus pede arcu, dapibus eu, fermentum et, dapibus sed, urna. Morbi interdum mollis sapien. Sed ac risus.
-
-                        Phasellus lacinia, magna a ullamcorper laoreet, lectus arcu pulvinar risus, vitae facilisis libero dolor a purus. Sed vel lacus. Mauris nibh felis, adipiscing varius, adipiscing in, lacinia vel, tellus. Suspendisse ac urna. Etiam pellentesque mauris ut lectus. Nunc tellus ante, mattis eget, gravida vitae, ultricies ac, leo. Integer leo pede, ornare a, lacinia eu, vulputate vel, nisl. Suspendisse mauris.
-                        
-                        Fusce accumsan mollis eros. Pellentesque a diam sit amet mi ullamcorper vehicula. Integer adipiscing risus a sem. Nullam quis massa sit amet nibh viverra malesuada. Nunc sem lacus, accumsan quis, faucibus non, congue vel, arcu. Ut scelerisque hendrerit tellus. Integer sagittis. Vivamus a mauris eget arcu gravida tristique. Nunc iaculis mi in ante. Vivamus imperdiet nibh feugiat est.</p>
-            </div>
+                <p class=""><%=foundclass.classInfo%> </p>
+                </div>
             <div class="col-md-5">
                 <h2>TIMETABLE</h2>
                 <p>How many times per week</p>
                 <!-- time table -->
                 <ul class="list-group ">
-                        <li class="list-group-item d-flex justify-content-between">MONDAY
-                            <span>10:00 — 12:00</span>
+                        <li class="list-group-item d-flex justify-content-between"><%=foundclass.classDay%> 
+                            <span><%=foundclass.classStartTime%> — <%=foundclass.classEndTime%></span>
                         </li>
                        
                        
@@ -71,4 +67,4 @@
 
 
 
-<%include partials/footer%>
+<%include ../partials/footer%>

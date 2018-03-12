@@ -7,7 +7,11 @@ var classSchema = new mongoose.Schema({
     className: String,
     classImage: String,
     classType: String,
-    classDescription: String
+    classDescription: String,
+    classDay: String,
+    classStartTime : String,
+    classEndTime: String, 
+    classInfo: String
 });
 
     // exporting the schema
