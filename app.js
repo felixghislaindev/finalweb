@@ -4,7 +4,8 @@ var express = require("express"),
   request = require("request"),
   bodyparser = require("body-parser"),
   mongoose = require("mongoose");
-Class = require("./models/class");
+Class = require("./models/class"),
+methodOverride = require("method-override");
 
 
 // require routes
@@ -19,6 +20,7 @@ app.use(express.static("public"));
 app.use(bodyparser.urlencoded({
   extended: true
 }));
+app.use(methodOverride("_method"));
 
 
 
@@ -99,11 +101,11 @@ app.get("/cmsclass", function (req, res) {
 });
 
 // CREATE NEWS CLASS 
-app.get("/newclass", function (req, res) {
+app.get("/cmsclass/newclass", function (req, res) {
   res.render("./cms/newclass");
 
 })
-app.post("/newclass", function (req, res) {
+app.post("/cmsclass/newclass", function (req, res) {
   var className = req.body.classname;
   var classType = req.body.classtype;
   var classImage = req.body.classimage;
@@ -126,18 +128,57 @@ app.post("/newclass", function (req, res) {
     if (err) {
       console.log(err);
     } else {
-     console.log(req.body.classInfo);
-      console.log("sucess");
+     
+     res.redirect("/cmsclass");
     }
   });
 
 
 });
 
-
-app.get("/editclass", function (req, res) {
-  res.render("./cms/editclass");
+// EDIT CLASSES   
+app.get("/cmsclass/:id/editclass", function (req, res) {
+Class.findById(req.params.id, function(err, foundclass){
+  res.render("./cms/editclass",{Class:foundclass});
+})
 });
+
+//UPDATE CLASSES
+app.put("/cmsclass/:id",function(req,res){
+  Class.findByIdAndUpdate(req.params.id,{
+    className:        req.body.classname,
+    classType:        req.body.classtype,
+    classImage:       req.body.classimage,
+    classDescription: req.body.classdescription,
+    classInfo:        req.body.classInfo,
+    classDay:         req.body.classday,
+    classStartTime:   req.body.classStartTime,
+    classEndTime:     req.body.classEndTime
+ 
+  }, function(err, udpatedclass){
+
+  if(err){
+      console.log(err);
+     } else{
+      
+      res.redirect("/cmsclass");
+     }
+
+  });
+});
+
+//DELETE/ DESTROY CLASSES
+app.delete("/cmsclass/:id", function(req, res){
+  Class.findByIdAndRemove(req.params.id, function(err){
+    if(err){
+      console.log(err);
+    } else{
+      console.log(req.param.id);
+      res.redirect("/cmsclass");
+    }
+  })
+})
+
 
 // define route for cms blog page
 app.get("/newblog", function (req, res) {

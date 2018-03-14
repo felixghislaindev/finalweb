@@ -29,23 +29,76 @@
 
 <section class="showclass">
     <div class="container">
-        <div class="text-center">
-                <h1>Your Classes </h1>
-                <p>Classes that are in your database </p>
-        </div>
+      
+              
+       
         
-        <div class="row">
-            <div class="col-lg-4">
+        <h2 class="text-center">EDIT <%=Class.className%></h2>
+        <div class="row justify-content-md-center">
+            
+            <div class="col-md-6 col-md-auto ">
+                <form action="/cmsclass/<%=Class._id%>?_method=PUT" class="" method="POST">
+                    <div class="col-md-12">
+                            <label for="exampleInputEmail1">Class Name:</label>
+                            <input type="text" class="form-control"   name="classname" placeholder="Class Name" value="<%=Class.className%>">
+                    </div>
+                    <div class="col-md-12">
+                            <label for="exampleInputEmail1">Class Type:</label>
+                            <input type="text" class="form-control"   name="classtype" placeholder="Class Type" value="<%=Class.classType%>">
+                    </div>
+                    <div class="col-md-12">
+                            <label for="exampleInputEmail1">Class Image:</label>
+                            <input type="text" class="form-control"   name="classimage" placeholder="Class Image" value="<%=Class.classImage%>">
+                    </div>
+                   
+                    <div class="col-md-12">
+                            <label for="comment">Class Description:</label>
+                            <input type="text" class="form-control" name = "classdescription" placeholder="Product Size"value="<%=Class.classDescription%>">
+                            
+                    </div>
+                    <div class="col-md-12">
+                            <label for="comment">Class Info:</label>
+                            <textarea type="text" class="form-control" name = "classInfo" placeholder="Product Size">
+                                    <%=Class.classInfo%>
+                                </textarea>
+                            
+                    </div>
+                    <div class="col-md-12">
+                        <label for="comment">Class Day:</label>
+                        <select name="classday" class="custom-select"value="<%=Class.classDay%>">
+                            <option value="Monday">Monday</option>
+                            <option value="Tuesday">Tuesday</option>
+                            <option value="Wenesday">Wenesday</option>
+                            <option value="Thursaday">Thursaday</option>
+                            <option value="Friday">Friday</option>
+                            <option value="Saturday">Saturday</option>
+                            <option value="Sunday">Sunday</option>
+                          </select>
+                        
+                </div>
+                <div class="col-md-12">
+                        <label for="comment">Class Start Time:</label>
+                        <input type="text" class="form-control" name = "classStartTime" placeholder="" value="<%=Class.classStartTime%>">
+                            
+                        
+                </div>
+                <div class="col-md-12">
+                        <label for="comment">Class Start Time:</label>
+                        <input type="text" class="form-control" name = "classEndTime" placeholder=""value="<%=Class.classEndTime%>">
+                            
+                        
+                </div>
 
-            </div>
-            <div class="col-lg-4">
-
-            </div>
-            <div class="col-lg-4">
-
+                    <button class=" btn btn-lg btn-block">SUBMIT</button>
+                   
+                </form>
+                <form action="/cmsclass/<%=Class._id%>/?_method=DELETE" method="POST">
+                    <button>Delete</button>
+                    </form>
             </div>
         </div>
     </div>
+    
 </section>
 
 
