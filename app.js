@@ -5,6 +5,7 @@ var express = require("express"),
   bodyparser = require("body-parser"),
   mongoose = require("mongoose");
 Class = require("./models/class"),
+Blog = require("./models/blog"),
 methodOverride = require("method-override");
 
 
@@ -62,7 +63,7 @@ app.get("/classes/:id", function (req, res) {
     if (err) {
       console.log(err);
     } else {
-      console.log(foundclass);
+   
       res.render("./classes/showclass", {
         foundclass: foundclass
       });
@@ -81,10 +82,17 @@ app.get("/login", function (req, res) {
   res.render("login");
 });
 
-// define route for cms blog page
-app.get("/cmsblog", function (req, res) {
-  res.render("./cms/cmsblog");
-});
+
+
+
+
+
+
+
+
+
+
+
 
 //Show classes in cms
 app.get("/cmsclass", function (req, res) {
@@ -160,7 +168,6 @@ app.put("/cmsclass/:id",function(req,res){
   if(err){
       console.log(err);
      } else{
-      
       res.redirect("/cmsclass");
      }
 
@@ -177,13 +184,51 @@ app.delete("/cmsclass/:id", function(req, res){
       res.redirect("/cmsclass");
     }
   })
-})
+});
+
+// define route for cms blog page
+//show blogs 
+
+app.get("/cmsblog", function (req, res) {
+  Blog.find({}, function(err,foundblog){
+    if(err){
+      console.log(err);
+    } else {
+      res.render("./cms/cmsblog", {foundblog:foundblog});
+    }
+  })
+
+});
+
+// CREAT NEW CLASS
 
 
 // define route for cms blog page
-app.get("/newblog", function (req, res) {
+app.get("/cmsblog/newblog", function (req, res) {
   res.render("./cms/newblog");
 });
+app.post("/cmsblog/newblog", function(req,res){
+  var blogTitle = req.body.Blogtitle;
+  var blogImage = req.body.Blogimage;
+  var blogDescription = req.body.Blogdescription;
+  var blogAuthor = req.body.Blogauthor;
+  
+  var newblog = {
+    blogTitle:blogTitle,
+    blogImage:blogImage,
+    blogDescription: blogDescription,
+    blogAuthor:blogAuthor
+  }
+  Blog.create(newblog, function(err,newblog){
+    if(err){
+      console.log(err)
+    } else {
+      console.log(newblog);
+      res.redirect("/cmsblog");
+    }
+  })
+
+})
 // define route for cms blog page
 app.get("/showblog", function (req, res) {
   res.render("./cms/showblog");

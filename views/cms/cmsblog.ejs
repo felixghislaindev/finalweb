@@ -36,8 +36,8 @@
 
                         <div class="col-xl-3 col-lg-3 col-md-43 col-sm-6 mb-4">
                                 <ul class="list-group">
-                                        <li class="list-group-item"><a class="nav-link" href="/newblog">ADD NEW POST</a></li>
-                                        <li class="list-group-item"><a class="nav-link" href="/showblog">VIEW/EDIT POST</a></li>
+                                        <li class="list-group-item"><a class="nav-link" href="/cmsblog/newblog">ADD NEW POST</a></li>
+                                        <li class="list-group-item"><a class="nav-link" href="/cmsblog/showblog">VIEW/EDIT POST</a></li>
                                       
                                       </ul>
                         </div>
@@ -86,6 +86,36 @@
       
           
        
+      </section>
+      <section>
+        <div class="container">
+            <h3 class="page-heading mb-4 text-center">Your Blogs</h3>
+            <div class="row"> 
+              <div class="col-12">
+                <div class="card-deck-wrapper">
+                  <div class="card-deck">
+                
+                    <%for(var i = 0; i < foundblog.length;i++){%>
+                  <div class="card">
+                    <div class="card-content">
+                      <div class="">
+                        <img 
+                              class="card-img-top img-fluid" src="<%= foundblog[i].blogImage%>" alt="">
+                      </div>
+                      <div class="card-body">
+                        <h4 class="card-tile"><%= foundblog[i].blogTitle%></h4>
+                        <p class="card-text">Blog Author : <%= foundblog[i].blogAuthor%></p>
+                        <p class="card-text"></p>
+                      </div>
+                    </div>
+                  </div>
+                  <%}%> 
+                </div>
+                </div>
+              </div>
+            </div>
+            </div>
+        </div>
       </section>
 
 

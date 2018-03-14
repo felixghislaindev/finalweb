@@ -1,5 +1,5 @@
 
-//requiring monggose 
+//requiring mongoose 
 var mongoose = require("mongoose");
 
 // class schema setup

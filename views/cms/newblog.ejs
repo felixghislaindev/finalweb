@@ -35,18 +35,23 @@
         <div class="row justify-content-md-center">
             
             <div class="col-md-6 col-md-auto ">
-                <form action="" class="">
+                <form action="/cmsblog/newblog" class="" method="POST">
                     <div class="col-md-12">
-                            <label for="exampleInputEmail1">Post Name</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                            <label for="exampleInputEmail1">Blog Title</label>
+                            <input  class="form-control"  name="Blogtitle"  placeholder="Blog Title">
                     </div>
                     <div class="col-md-12">
-                            <label for="exampleInputEmail1">Post Image</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                            <label for="exampleInputEmail1">Blog Image</label>
+                            <input  class="form-control" name="Blogimage"  placeholder="Blog Image">
                     </div>
                     <div class="col-md-12">
-                            <label for="comment">Description:</label>
-                            <textarea class="form-control" rows="5" id="comment"></textarea>
+                            <label for="comment">Blog Description:</label>
+                            <textarea class="form-control" rows="5" name="Blogdescription" id="comment"></textarea>
+                            
+                    </div>
+                    <div class="col-md-12">
+                            <label for="comment">Blog Author:</label>
+                            <input  class="form-control" rows="5" name="Blogauthor" id="comment">
                             
                     </div>
                     <button class=" btn btn-lg btn-block">POST</button>
