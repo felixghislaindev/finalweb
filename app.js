@@ -72,6 +72,30 @@ app.get("/classes/:id", function (req, res) {
 
 });
 
+
+// defines the routes for the blog page
+
+app.get("/blog", function (req, res) {
+  Blog.find({}, function(err, foundblog){
+    if(err){
+      console.log(err);
+    } else{
+      res.render("./blog/blog", {foundblog:foundblog});
+    }
+  });
+});
+
+//show specific blog 
+app.get("/blog/:id", function(req, res){
+Blog.findById(req.params.id, function(err, foundblog){
+  if(err){
+    console.log(err);
+  } else {
+    res.render("./blog/showblog", {foundblog:foundblog});
+  }
+});
+});
+
 // define rout for content management 
 app.get("/cms", function (req, res) {
   res.render("./cms/cms");
@@ -200,10 +224,11 @@ app.get("/cmsblog", function (req, res) {
 
 });
 
-// CREAT NEW CLASS
+
 
 
 // define route for cms blog page
+// CREATE NEW BLOG
 app.get("/cmsblog/newblog", function (req, res) {
   res.render("./cms/newblog");
 });
@@ -228,12 +253,47 @@ app.post("/cmsblog/newblog", function(req,res){
     }
   })
 
-})
-// define route for cms blog page
-app.get("/showblog", function (req, res) {
-  res.render("./cms/showblog");
 });
 
+// UPDATE BLOG 
+// find the specific blog and display on the edit blog page
+app.get("/cmsblog/:id/editblog", function (req, res) {
+  Blog.findById(req.params.id, function(err, foundblog){
+    if(err){
+      console.log(err);
+    } else{
+      res.render("./cms/showblog", {foundblog:foundblog});
+    }
+  })
+  
+});
+
+//update changes made to the blog 
+app.put("/cmsblog/:id", function(req,res){
+  Blog.findByIdAndUpdate(req.params.id, {
+    blogTitle : req.body.Blogtitle,
+    blogImage : req.body.Blogimage,
+    blogDescription: req.body.Blogdescription 
+  }, function(err, updatedblog){
+    if(err){
+      console.log(err);
+    } else{
+      res.redirect("/cmsblog");
+    }
+  });
+});
+
+//DELETE/ DESTROY BLOG
+
+app.delete("/cmsblog/:id", function(req, res){
+  Blog.findByIdAndRemove(req.params.id, function(err){
+    if(err){
+      console.log(err);
+    } else{
+      res.redirect("/cmsblog");
+    }
+  })
+})
 
 // define route for cms store page
 app.get("/cmsstore", function (req, res) {
@@ -254,11 +314,6 @@ app.get("/cmsuser", function (req, res) {
   res.render("./cms/cmsuser");
 });
 
-// defines the routes for the blog page
-
-app.get("/blog", function (req, res) {
-  res.render("/blog/blog");
-})
 
 // define routes for the store page
 app.get("/store", function (req, res) {
