@@ -4,9 +4,13 @@ var express = require("express"),
   request = require("request"),
   bodyparser = require("body-parser"),
   mongoose = require("mongoose");
-Class = require("./models/class"),
-Blog = require("./models/blog"),
-methodOverride = require("method-override");
+  passport = require("passport");
+  LocalStrategy = require("passport-local");
+  passportLocalMongoose = require("passport-local-mongoose");
+  Class = require("./models/class"),
+  Blog = require("./models/blog"),
+  Admin = require("./models/Admin"),
+  methodOverride = require("method-override");
 
 
 // require routes
@@ -16,12 +20,25 @@ methodOverride = require("method-override");
 // connecting to the database 
 mongoose.connect("mongodb://localhost/rage-fitness");
 
+
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyparser.urlencoded({
   extended: true
 }));
+app.use(require("express-session")({
+  secret:"using passport package",
+  resave: true,
+    saveUninitialized: true
+}));
 app.use(methodOverride("_method"));
+//use passport 
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.serializeUser(Admin.serializeUser());
+passport.deserializeUser(Admin.deserializeUser());
+
 
 
 
@@ -319,6 +336,38 @@ app.get("/cmsuser", function (req, res) {
 app.get("/store", function (req, res) {
   res.render("store/store");
 })
+
+// define route for Admin login and sign up 
+app.get("/cms/signup", function (req, res) {
+  //will show admin creation form
+  res.render("./cms/AdminSignUp");
+});
+
+//handles Adming creation
+app.post("/cms/signup", function(req,res){
+  req.body.username
+  req.body.password
+  Admin.register(new Admin ({ username : req.body.username}), req.body.password, function(err,user){
+    if(err){
+      console.log(err);
+      return res.render("./cms/AdminSignUp");
+    } else {
+      passport.authenticate("local")(req,res,function(){
+        res.redirect("/cms");
+      })
+    }
+  })
+
+
+});
+
+
+app.get("/cms/login", function (req, res) {
+  //show admin login form
+  res.render("./cms/login");
+});
+
+
 
 
 
