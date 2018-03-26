@@ -33,9 +33,10 @@ app.use(require("express-session")({
 }));
 app.use(methodOverride("_method"));
 //use passport 
+
 app.use(passport.initialize());
 app.use(passport.session());
-
+passport.use(new LocalStrategy(Admin.authenticate()));
 passport.serializeUser(Admin.serializeUser());
 passport.deserializeUser(Admin.deserializeUser());
 
@@ -361,11 +362,18 @@ app.post("/cms/signup", function(req,res){
 
 });
 
-
+//login routes 
 app.get("/cms/login", function (req, res) {
   //show admin login form
   res.render("./cms/login");
 });
+
+app.post("/cms/login",passport.authenticate("local", {
+          successRedirect: "/cms",
+          failureRedirect: "/cms/login"}) ,function(req,res){ 
+
+});
+
 
 
 
