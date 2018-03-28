@@ -113,8 +113,11 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px rgba(0, 0, 0, 0.19); }
 
 .head-text {
-  color: #333333;
+  color: #EA2027;
   padding-bottom: 5px; }
+
+.sign-up {
+  margin-right: 40px; }
 
 .frm-imput {
   margin-bottom: 50px;
@@ -136,7 +139,7 @@ input[type="password"], input[type="password"]:focus {
 
 .btn-login {
   border-radius: 0;
-  background: #333333;
+  background: #EA2027;
   color: #fff;
   -webkit-transition: all 0.7s;
   transition: all 0.7s; }

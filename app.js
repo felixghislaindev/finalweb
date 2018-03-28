@@ -10,6 +10,7 @@ var express = require("express"),
   Class = require("./models/class"),
   Blog = require("./models/blog"),
   Admin = require("./models/Admin"),
+  User = require("./models/User"),
   methodOverride = require("method-override");
 
 
@@ -36,9 +37,9 @@ app.use(methodOverride("_method"));
 
 app.use(passport.initialize());
 app.use(passport.session());
-passport.use(new LocalStrategy(Admin.authenticate()));
-passport.serializeUser(Admin.serializeUser());
-passport.deserializeUser(Admin.deserializeUser());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 
 
@@ -119,13 +120,40 @@ app.get("/cms", function (req, res) {
   res.render("./cms/cms");
 });
 
-// define route for cms login page
+
+
+// define route for login page
+app.get("/register", function (req, res) {
+  res.render("register");
+});
+
+app.post("/register", function(req,res){
+User.register(new User ({
+  Fisrtname : req.body.firstname,
+  Secondname : req.bodysecondname,
+  username : req.body.username,
+  Telephone : req.body.Telephone
+}),req.body.password, function(err){
+  if(err){
+    console.log(err);
+    return res.render("/");
+  } else {
+    passport.authenticate("local")(req,res, function (){
+      res.redirect("/login");
+    })
+  }
+});
+});
+
+// define route for login page
 app.get("/login", function (req, res) {
   res.render("login");
 });
+ app.post("/login",passport.authenticate("local", {
+  successRedirect: "/",
+  failureRedirect: "/login"}) ,function(req,res){ 
 
-
-
+});
 
 
 
