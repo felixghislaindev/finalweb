@@ -1,0 +1,94 @@
+
+<%include ../partials/header%>
+
+<%include ../partials/cmsnav%>
+
+<section id="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10">
+                <h1>
+                    <i class="fas fa-cogs"></i>
+                    Dashboard <small>Manage Your Site</small></h1>
+            </div>
+        </div>
+        <div class="col-md-2">
+
+        </div>
+    </div>
+</section>
+
+<!-- breadcrumb section -->
+<section id="breadcrumb">
+    <div class="container">
+        <ol class="breadcrumb">
+           <li class="active"> Store Dashboard</li> 
+        </ol>
+    </div>
+</section>
+
+<section class="showclass">
+    <div class="container">
+      
+              
+       
+        
+        <h2 class="text-center">EDIT <%=Product.ProductTitle%></h2>
+        <div class="row justify-content-md-center">
+            
+            <div class="col-md-6 col-md-auto ">
+                <form action="/cmsviewprod/<%=Product._id%>?_method=PUT" class="" method="POST">
+                    <div class="col-md-12">
+                            <label for="exampleInputEmail1">Product Image:</label>
+                            <input type="text" class="form-control"   name="ProductImage" placeholder="Product Image" value="<%=Product.ProductImage%>">
+                    </div>
+                    <div class="col-md-12">
+                            <label for="exampleInputEmail1">Product Title:</label>
+                            <input type="text" class="form-control"   name="ProductTitle" placeholder="Product Title" value="<%=Product.ProductTitle%>">
+                    </div>
+                    <div class="col-md-12">
+                            <label for="exampleInputEmail1">Product Type:</label>
+                            <input type="text" class="form-control"   name="ProductType" placeholder="Product Type" value="<%=Product.ProductType%>">
+                    </div>
+                   
+                    <div class="col-md-12">
+                            <label for="comment">Product Size:</label>
+                            <input type="text" class="form-control" name = "ProductSize" placeholder="Product Size"value="<%=Product.ProductSize%>">
+                            
+                    </div>
+                    <div class="col-md-12">
+                        <label for="comment">Product Price:</label>
+                        <input type="number" class="form-control" name = "ProductPrice" placeholder="Product Price"value="<%=Product.ProductPrice%>">
+                        
+                </div>
+                    <div class="col-md-12">
+                            <label for="comment">Product Description :</label>
+                            <textarea type="text" class="form-control" name = "ProductDescription" placeholder="Product Description">
+                                    <%=Product.ProductDescription%>
+                                </textarea>
+                            
+                    </div>
+                 
+
+                    <button class=" btn btn-lg btn-block">SUBMIT</button>
+                   
+                </form>
+                <form action="/cmsviewprod/<%=Product._id%>/?_method=DELETE" method="POST">
+                    <button>Delete</button>
+                    </form>
+                
+            </div>
+        </div>
+    </div>
+    
+</section>
+
+
+
+       <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

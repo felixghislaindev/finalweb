@@ -2,12 +2,15 @@
 <%include ../partials/nav%>
 <section class="store">
     <!-- <div class="container"> -->
-        <h2>STORE</h2>
+        <h2 class="text-center">STORE</h2>
         <p></p>
         <div class="conatiner text-center"> 
                 <h3>RAGE FITNESS</h3>
                 <p>ALL</p>
             </div>
+            
+
+            
         <div class="row">
             
                 <div class="col-lg-2">
@@ -21,12 +24,14 @@
                               
                 </div>
                 <div class="col-lg-9">
-                      <div class="row"> 
-                          <div class="card-deck">
-                                <div class="col-lg-4 col-md-6 col-sm-10">
-                                        <div class="card ">
+                        <div class="card-deck">
+                        <%for(var i = 0; i < foundproduct.length;i++){%>
+                   
+                          
+                                <div class="col-lg-3 col-md-6 col-sm-10" style="padding-top:15px;">
+                                        <div class="card " >
                                                 <div class="view overlay">
-                                                        <img src="images/prod1.jpg" class="img-fluid" alt="">
+                                                        <img src="<%=foundproduct[i].ProductImage%>" class="img-fluid" alt="">
                                                         <a>
                                                             <div class="mask rgba-white-slight"></div>
                                                         </a>
@@ -34,90 +39,36 @@
                                                     <!--Card content-->
                 <div class="card-body text-center">
                         <!--Category & Title-->
-                        <a href="" class="grey-text">
-                            <h5 class="text-dark">Shirt</h5>
+                        <a  class="grey-text">
+                            <h5 class="text-dark"><%=foundproduct[i].ProductType%></h5>
                         </a>
                         <h5>
                             <strong>
-                                <a href="" class="text-secondary">Denim shirt
+                                <a href="/store/<%= foundproduct[i]._id%>" class="text-secondary"><%=foundproduct[i].ProductTitle%>
                                     <span class="badge badge-danger">NEW</span>
                                 </a>
                             </strong>
                         </h5>
     
                         <h4 class="font-weight-bold blue-text">
-                            <strong>120$</strong>
+                            <strong>£ <%=foundproduct[i].ProductPrice%></strong>
                         </h4>
     
                     </div>
                                               </div>
                                   </div>
-                                  <div class="col-lg-4 col-md-6 col-sm-10">
-                                        <div class="card ">
-                                                <div class="view overlay">
-                                                        <img src="images/prod2.jpg" class="img-fluid" alt="">
-                                                        <a>
-                                                            <div class="mask rgba-white-slight"></div>
-                                                        </a>
-                                                    </div>
-                                                    <!--Card content-->
-                <div class="card-body text-center">
-                        <!--Category & Title-->
-                        <a href="" class="text-dark">
-                            <h5>Shirt</h5>
-                        </a>
-                        <h5>
-                                <strong>
-                                        <a href="" class="text-secondary">Denim shirt
-                                            <span class="badge badge-danger">NEW</span>
-                                        </a>
-                                    </strong>
-                        </h5>
-    
-                        <h4 class="text-dark">
-                            <strong>120$</strong>
-                        </h4>
-    
-                    </div>
-                                              </div>
-                                  </div>
-                                  <div class="col-lg-4 col-md-6 col-sm-10">
-                                        <div class="card ">
-                                                <div class="view overlay">
-                                                        <img src= "images/prod3.jpg" class="img-fluid" alt="">
-                                                        <a>
-                                                            <div class="mask rgba-white-slight"></div>
-                                                        </a>
-                                                    </div>
-                                                    <!--Card content-->
-                <div class="card-body text-center">
-                        <!--Category & Title-->
-                        <a href="" class="text-dark">
-                            <h5>Shirt</h5>
-                        </a>
-                        <h5>
-                                <strong>
-                                        <a href="" class="text-secondary">Denim shirt
-                                            <span class="badge badge-danger">NEW</span>
-                                        </a>
-                                    </strong>
-                        </h5>
-    
-                        <h4 class=" text-black">
-                            <strong >£4.00</strong>
-                        </h4>
-    
-                    </div>
-                                              </div>
-                                  </div>
-                              </div>
+                              
+                            
+                             
+                              <%}%> 
                           </div>
                           
                        
-
+                           
                 
-        </div>
+        
       
+    </div>
     </div>
 </section>
 

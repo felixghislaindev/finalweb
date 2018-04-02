@@ -4,6 +4,7 @@ var express = require("express"),
   request = require("request"),
   bodyparser = require("body-parser"),
   mongoose = require("mongoose");
+  session = require("express-session");
   passport = require("passport");
   LocalStrategy = require("passport-local");
   passportLocalMongoose = require("passport-local-mongoose");
@@ -11,6 +12,10 @@ var express = require("express"),
   Blog = require("./models/blog"),
   Admin = require("./models/Admin"),
   User = require("./models/User"),
+  Cart = require("./models/ShoppingCart"),
+  Product = require("./models/Product"),
+  validator =  require("express-validator"),
+  Mongostore = require("connect-mongo")(session),
   methodOverride = require("method-override");
 
 
@@ -27,11 +32,16 @@ app.use(express.static("public"));
 app.use(bodyparser.urlencoded({
   extended: true
 }));
-app.use(require("express-session")({
+app.use(validator());
+app.use(session({
   secret:"using passport package",
   resave: true,
-    saveUninitialized: true
+  saveUninitialized: true,
+  store: new Mongostore({mongooseConnection:mongoose.connection }),
+  cookie: {maxAge: 180 * 60 * 1000 }
 }));
+
+
 app.use(methodOverride("_method"));
 //use passport 
 
@@ -40,7 +50,10 @@ app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
-
+app.use(function(req,res,next){
+  res.locals.session = req.session;
+  next();
+});
 
 
 
@@ -114,6 +127,28 @@ Blog.findById(req.params.id, function(err, foundblog){
   }
 });
 });
+// define routes for the store page
+app.get("/store", function (req, res) {
+  Product.find({}, function(err,foundproduct){
+    if(err){
+      console.log(err);
+    } else{
+      res.render("store/store", {foundproduct:foundproduct});
+    }
+  });
+  
+});
+
+// show specific product 
+app.get("/store/:id", function(req,res){
+  Product.findById(req.params.id, function(err,foundproduct){
+    if(err){
+      console.log(err);
+    } else{
+    res.render("./store/showprod", {Product:foundproduct});
+    }
+  })
+})
 
 // define rout for content management 
 app.get("/cms", function (req, res) {
@@ -346,14 +381,94 @@ app.get("/cmsstore", function (req, res) {
   res.render("./cms/cmsstore");
 });
 // define route for cms store page
-app.get("/cmsnewprod", function (req, res) {
-  res.render("./cms/cmsnewprod");
+app.get("/cmsprod", function (req, res) {
+  res.render("./cms/cmsprod");
+}); 
+
+// define route to aad new product
+app.post("/cmsprod", function(req,res){
+  var ProductImage = req.body.Productimage;
+  var ProductTitle =  req.body.Productname;
+  var ProductDescription = req.body.Productdescription;
+  var ProductPrice = req.body.Productprice;
+  var ProductType = req.body.Producttype;
+  var ProductSize = req.body.Productsize;
+
+  var newProduct = {
+    ProductImage:ProductImage,
+    ProductTitle:ProductTitle,
+    ProductDescription: ProductDescription,
+    ProductPrice: ProductPrice,
+    ProductType: ProductType,
+    ProductSize : ProductSize
+
+  } 
+
+  Product.create(newProduct, function(err, newProduct){
+    if(err){
+      console.log(err);
+    } else {
+      console.log(ProductType);
+     
+      res.redirect("/cmsstore");
+    }
+  });
 });
 
-// define route for cms store page
+// define route to view product in the database
 app.get("/cmsviewprod", function (req, res) {
-  res.render("./cms/cmsviewprod");
+
+  Product.find({}, function(err, foundproduct){
+    if(err){
+      console.log(err);
+    } else {
+      res.render("./cms/cmsviewprod", {foundproduct:foundproduct});
+    }
+  })
+  
 });
+
+app.get("/cmsviewprod/:id/editprod", function(req,res){
+  Product.findById(req.params.id, function(err,foundproduct){
+    if(err){
+      console.log(err);
+    } else {
+      res.render("./cms/editprod", {Product:foundproduct})
+    }
+   
+  });
+});
+
+// updte the product 
+app.put("/cmsviewprod/:id", function(req,res){
+Product.findByIdAndUpdate(req.params.id, {
+  ProductImage:req.body.ProductImage,
+  ProductTitle:req.body.ProductTitle,
+  ProductDescription: req.body.ProductDescription,
+  ProductPrice: req.body.ProductPrice,
+  ProductType: req.body.ProductType,
+  ProductSize : req.body.ProductSize
+}, function(err,Updatedprod){
+  if(err){
+    console.log(err)
+  } else{
+    console.log(  req.body.ProductType);
+    res.redirect("/cmsviewprod");
+  }
+});
+});
+
+//Delete/Destroy the product
+app.delete("/cmsviewProd/:id", function(req,res){
+  Product.findByIdAndRemove(req.params.id, function(err){
+    if(err){
+      console.log(err);
+    } else{
+      res.redirect("/cmsviewprod");
+    }
+  })
+})
+
 
 // define route for cms user page
 app.get("/cmsuser", function (req, res) {
@@ -361,10 +476,7 @@ app.get("/cmsuser", function (req, res) {
 });
 
 
-// define routes for the store page
-app.get("/store", function (req, res) {
-  res.render("store/store");
-})
+
 
 // define route for Admin login and sign up 
 app.get("/cms/signup", function (req, res) {
@@ -404,6 +516,34 @@ app.post("/cms/login",passport.authenticate("local", {
 
 
 
+
+app.get("/getcart/:id", function(req,res){
+  var producID = req.params.id;
+  var cart = new Cart(req.session.cart? req.session.cart : {});
+
+Product.findById(producID, function(err, product){
+ if(err){
+   console.log(err);
+   return res.redirect("/");
+ } else{
+   cart.add(product, producID);
+   req.session.cart =  cart;
+   console.log(req.session.cart);
+   res.redirect("/store");
+ }
+
+}) 
+});
+
+app.get("/card", function(req,res,next){
+if(!req.session.cart){
+  return res.render("./store/Cart", {products:null});
+}  else{
+  var cart = new Cart(req.session.cart);
+  res.render("./store/cart", { products: cart.generateArray(), totalPrice: cart.totalPrice});
+  console.log(this.ProductPrice);
+}
+})
 
 
 

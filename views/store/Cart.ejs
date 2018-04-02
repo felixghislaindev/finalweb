@@ -1,0 +1,96 @@
+<%include ../partials/header%>
+<%include ../partials/nav%>
+
+  
+
+<section class="shoppingcart">
+    <div class="container">
+        <div class="text-center">SHOPPING CART</div>
+    </div>
+</section>
+<% if(products){ %>
+    
+<section class="shoppingtable">
+    <div class="container">
+        <div class="row">
+           <div class="col-md-9">
+               <form action="">
+                   <div class="table-responsive">
+                       <table class="table"> 
+                           <thead>
+                               <tr>
+                                   <th colspan="2">Item</th>
+                                   <th>Quantity</th>
+                                   <th>Unit Price</th>
+                                   <th>SUBTOTAL</th>
+                                   <th></th>
+                               </tr>
+                           </thead>
+                           <%for(var i = 0; i < products.length;i++){%>
+                           <tbody>
+                               <td>
+                                   <img class="img-fluid" width="90" height="125" src="<%= products[i].item.ProductImage%>" alt="">
+                               </td>
+                               <td>
+                                    <a href=""><%= products[i].item.ProductTitle%></a>
+                               </td>
+                               <td><%= products[i].qty%></td>
+                               <td>£<%= products[i].ProductPrice%></td>
+                               <td>£<%= products[i].ProductPrice%></td>
+                               <td>
+                                   <a href="">
+                                        <i class="fas fa-trash-alt "></i>
+                                   </a>
+                               </td>
+                           </tbody>
+                           <%}%>   
+                        </table>
+                       </div>
+                       <div class="float-left"><a href="" class="btn btn-dark">
+                           <i class="fa fa-chevron-left"></i>
+                           Continue Shopping
+                        </a>
+                    </div>
+                    <div class="float-right">
+                        <button class="btn btn-primary btn-danger">
+                            
+                            PROCEED TO CHECKOUT
+                            <i class="fa fa-chevron-right"></i>
+                        </button>
+                    </div>
+                   
+               </form>
+           </div>
+           <div class="col-md-3">
+               <div class="box">
+                   <div class="boox-header">
+                       <h3>ORDER SUMMARY</h3>
+                   </div>
+               </div>
+               <div class="table-responsive">
+                   <table class="table">
+                       <tbody>
+                          
+                           <tr>
+                               <td>Total</td>
+                               <th>£<%= totalPrice%></th>
+                           </tr>
+                       </tbody>
+                       </table>
+                   </div>
+                </div>
+           </div>
+        </div>
+                
+    </div>
+</section>
+
+
+<% } else{ %>  
+    <div class="container">
+            <h2> No items in your cart </h2>
+    </div>
+  
+<% } %>
+
+<%include ../partials/footer%>

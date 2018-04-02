@@ -35,26 +35,30 @@
         <div class="row justify-content-md-center">
             
             <div class="col-md-6 col-md-auto ">
-                <form action="" class="">
+                <form action="/cmsprod" method="POST" class="">
+                    <div class="col-md-12">
+                        <label for="exampleInputEmail1">Product Image:</label>
+                        <input type="text" class="form-control"  placeholder="Product Type" name="Productimage">
+                </div>
                     <div class="col-md-12">
                             <label for="exampleInputEmail1">Product Name:</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Product Name">
+                            <input type="text" class="form-control"  placeholder="Product Name" name="Productname">
                     </div>
                     <div class="col-md-12">
                             <label for="exampleInputEmail1">Product Type:</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Product Type">
+                            <input type="text" class="form-control"  placeholder="Product Type" name="Producttype">
                     </div>
                     <div class="col-md-12">
                             <label for="exampleInputEmail1">Product Price:</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Product Price">
+                            <input type="number" class="form-control"  placeholder="Product Price" name="Productprice">
                     </div>
                     <div class="col-md-12">
                             <label for="exampleInputEmail1">Product Size:</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Product Size">
+                            <input type="text" class="form-control"  placeholder="Product Size" name="Productsize">
                     </div>
                     <div class="col-md-12">
                             <label for="comment">Product Description:</label>
-                            <textarea class="form-control" rows="5" id="comment"></textarea>
+                            <textarea class="form-control" rows="5" id="comment"name="Productdescription"></textarea>
                             
                     </div>
                     <button class=" btn btn-lg btn-block">SUBMIT</button>

@@ -1,0 +1,32 @@
+
+<%include ../partials/header%>
+<%include ../partials/nav%>
+
+<section class="blog">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                    <img src="<%=Product.ProductImage%>" class="img-fluid" alt="">  
+                    
+            </div>
+                <div class="col-lg-4">
+                        <h3 class="text-center"><%=Product.ProductTitle%></h3>
+                        <h3 class="text-center">£ <%=Product.ProductPrice%></h3>
+                   
+                    <p class="text-center"><%=Product.ProductDescription%></p>
+                    <a href="/getcart/<%= Product._id%>"class="btn btn-danger btn-lg btn-block">ADD TO CART</a>
+                    
+                            </div>
+                          
+                        </div>
+                </div>
+                
+            
+            
+            
+        </div>
+           
+    </div>
+</section>
+
+<%include ../partials/footer%>
