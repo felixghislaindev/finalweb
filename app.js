@@ -541,9 +541,19 @@ if(!req.session.cart){
 }  else{
   var cart = new Cart(req.session.cart);
   res.render("./store/cart", { products: cart.generateArray(), totalPrice: cart.totalPrice});
-  console.log(this.ProductPrice);
+  
 }
 })
+app.get("/checkout", function(req,res){
+  if(!req.session.cart){
+    return res.redirect("/card");
+  } else{
+    var cart = new Cart(req.session.cart);
+    res.render("./store/checkout", {products: cart.generateArray(),totalPrice: cart.totalPrice});
+  }
+
+  
+});
 
 
 
