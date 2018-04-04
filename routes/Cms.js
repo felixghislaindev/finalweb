@@ -313,8 +313,9 @@ router.get("/cms", function (req, res) {
   });
   
   //login routes 
-  router.get("/cms/login", function (req, res) {
+  router.get("/cms/login", checkIfAdmin,function (req, res) {
     //show admin login form
+    console.log(req.user);
     res.render("./cms/login");
   });
   
@@ -323,5 +324,14 @@ router.get("/cms", function (req, res) {
             failureRedirect: "/cms/login"}) ,function(req,res){ 
   
   });
+
+  function checkIfAdmin(req,res,next){
+    if (req.isAuthenticated() && req.user.isAdmin == true){
+      return next();
+    }else{
+      res.redirect("/");
+    } 
+    
+  } 
   
   module.exports = router;

@@ -38,5 +38,6 @@ router.post("/blogs/:id/comment",checkIfLoggedIn, function(req,res){
       res.redirect("/login");
     };
   };
+ 
 
   module.exports = router;
