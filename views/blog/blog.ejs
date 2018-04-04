@@ -25,9 +25,7 @@
             </div>
             <div class="col-lg-7">
                 <h2><%= foundblog[i].blogTitle%></h2>
-                <p><%= foundblog[i].blogDescription%></p>
-               
-                <span>by <%= foundblog[i].blogAuthor%></span> <br>
+                <p><%= foundblog[i].blogDescription.substring(0,200) %>...</p>
                 
                 <a href="/blog/<%= foundblog[i]._id%>" class="btn btn-success text-white">Read More</a>
             </div>

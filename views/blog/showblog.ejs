@@ -8,6 +8,7 @@
                     <h3 class="text-center"><%=foundblog.blogTitle%></h3>
                     <img src="<%=foundblog.blogImage%>" class="img-fluid" alt="">
                     <p><%=foundblog.blogDescription%></p>
+
             </div>
                 <div class="col-lg-4">
                     <div class="text-center">
@@ -22,6 +23,7 @@
                             </div>
                                 
                         </div>
+                        
                 </div>
                 
             
@@ -31,9 +33,62 @@
            
     </div>
 </section>
+
 <section class="comment">
     <div class="container">
-       <div class="text-center">COMMENTS</div> 
+            <div class="row">
+                    <div class="col-lg-8">
+                            <h3 class=" title text-center">COMMENTS</h3> 
+                        <%for(var i = 0; i < foundblog.comments.length;i++){%>
+
+                        <div class="media mb-3">
+                            <div class="text-center">
+                                    <img style="border-radius: 50%;" width="100px"; height="100px"; src="../images/6.jpeg" alt="">
+                                <h6 class="mt-1 mb-0 mr-3"><%= foundblog.comments[i].author.username%></h6>
+                            </div>
+                            <div class="media-body">
+                                <p class="mt-3 mb-2"><%= foundblog.comments[i].text%></p>
+                            </div>
+                            
+                        </div>
+                        <hr class="mb-3 mt-4 pb-3">
+                        <%}%>   
+
+
+
+                            <h3 class=" title text-center">Post your comment</h3>   
+                            <div class="media media-post">
+                                <a class="float-left author">
+                                    <div class="avatar">
+                                        <img style="border-radius: 50%;" width="100px"; height="100px"; src="../images/6.jpeg" alt="">
+                                    </div>
+                                </a>
+                                <div class="media-body ">
+                                    <form action="/blogs/<%= foundblog._id%>/comment" method="POST">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="author" name="comment[author]">
+                                        </div>
+                                            <textarea name="comment[text]" style=" outline:none ;resize: none; max-width:100%; max-height:80px; border:none; border-bottom: 1px solid grey; margin-left: 20px;; line-height:1.5;" class="form-contol" placeholder="write nice comments or go home..." rows="4"></textarea>
+                                      
+                                            <div class="media-footer">
+                                                    <button type="submit" class="btn btn-primary float-right">Comment</button>
+                                                
+                                            </div>
+                                    </form>
+                                        
+                                    </div>
+                            </div> 
+                          
+
+                    
+                    </div>
+                  
+            </div>
+      
+
     </div>
 </section> 
+
+
+
 <%include ../partials/footer%>
