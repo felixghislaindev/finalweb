@@ -2,6 +2,35 @@
 <%include ../partials/header%>
 <%include ../partials/nav%>
 
+<style>
+  /**
+ * The CSS shown here will not be introduced in the Quickstart guide, but shows
+ * how you can use CSS to style your Element's container.
+ */
+.StripeElement {
+  background-color: white;
+  height: 40px;
+  padding: 10px 12px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  box-shadow: 0 1px 3px 0 #e6ebf1;
+  -webkit-transition: box-shadow 150ms ease;
+  transition: box-shadow 150ms ease;
+}
+
+.StripeElement--focus {
+  box-shadow: 0 1px 3px 0 #cfd7df;
+}
+
+.StripeElement--invalid {
+  border-color: #fa755a;
+}
+
+.StripeElement--webkit-autofill {
+  background-color: #fefde5 !important;
+}
+</style>
+
 <section class="checkout">
     <div class="container">
         <div class="text-center"></div>
@@ -42,18 +71,19 @@
                 </div>
                 <div class="col-md-8 order-md-1">
                   <h4 class="mb-3">Billing address</h4>
-                  <form id="checkout" class="needs-validation" novalidate>
+                 
                     <div class="row">
                       <div class="col-md-6 mb-3">
+                          <form action="/charge" method="POST" id="payment-form">
                         <label for="firstName">First name</label>
-                        <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+                        <input type="text" class="form-control" id="firstName" placeholder="" value="" name="firstname">
                         <div class="invalid-feedback">
                           Valid first name is required.
                         </div>
                       </div>
                       <div class="col-md-6 mb-3">
                         <label for="lastName">Last name</label>
-                        <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+                        <input type="text" class="form-control" id="lastName" placeholder="" value="" >
                         <div class="invalid-feedback">
                           Valid last name is required.
                         </div>
@@ -66,7 +96,7 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text">@</span>
                         </div>
-                        <input type="text" class="form-control" id="username" placeholder="Username" required>
+                        <input type="text" class="form-control" id="username" placeholder="Username" >
                         <div class="invalid-feedback" style="width: 100%;">
                           Your username is required.
                         </div>
@@ -83,7 +113,7 @@
         
                     <div class="mb-3">
                       <label for="address">Address</label>
-                      <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
+                      <input type="text" class="form-control" id="address" placeholder="1234 Main St" name="address">
                       <div class="invalid-feedback">
                         Please enter your shipping address.
                       </div>
@@ -97,7 +127,7 @@
                     <div class="row">
                       <div class="col-md-5 mb-3">
                         <label for="country">Country</label>
-                        <select class="custom-select d-block w-100" id="country" required>
+                        <select class="custom-select d-block w-100" id="country" >
                           <option value="">Choose...</option>
                           <option>United States</option>
                         </select>
@@ -107,7 +137,7 @@
                       </div>
                       <div class="col-md-4 mb-3">
                         <label for="state">State</label>
-                        <select class="custom-select d-block w-100" id="state" required>
+                        <select class="custom-select d-block w-100" id="state" >
                           <option value="">Choose...</option>
                           <option>California</option>
                         </select>
@@ -117,7 +147,7 @@
                       </div>
                       <div class="col-md-3 mb-3">
                         <label for="zip">Zip</label>
-                        <input type="text" class="form-control" id="zip" placeholder="" required>
+                        <input type="text" class="form-control" id="zip" placeholder="" >
                         <div class="invalid-feedback">
                           Zip code required.
                         </div>
@@ -136,47 +166,108 @@
                       </div>
                      
                     </div>
-                    <div class="row">
-                      <div class="col-md-6 mb-3">
-                        <label for="cc-name">Name on card</label>
-                        <input type="text" class="form-control" id="cc-name" placeholder="" required>
-                        <small class="text-muted">Full name as displayed on card</small>
-                        <div class="invalid-feedback">
-                          Name on card is required
-                        </div>
+                 
+                      <div class=" mb-3">
+                       
+                          <div class="form-group">
+                            <label for="card-element">
+                              Credit or debit card
+                            </label>
+                            <div id="card-element">
+                              <!-- A Stripe Element will be inserted here. -->
+                            </div>
+                        
+                            <!-- Used to display form errors. -->
+                            <div id="card-errors" role="alert"></div>
+                          </div>
+                        
+                          <button>Submit Payment</button>
+                        </form>
                       </div>
-                      <div class="col-md-6 mb-3">
-                        <label for="cc-number">Credit card number</label>
-                        <input type="text" class="form-control" id="cc-number" placeholder="" required>
-                        <div class="invalid-feedback">
-                          Credit card number is required
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-3 mb-3">
-                        <label for="cc-expiration">Expiration</label>
-                        <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
-                        <div class="invalid-feedback">
-                          Expiration date required
-                        </div>
-                      </div>
-                      <div class="col-md-3 mb-3">
-                        <label for="cc-expiration">CVV</label>
-                        <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
-                        <div class="invalid-feedback">
-                          Security code required
-                        </div>
-                      </div>
-                    </div>
+                     
+                    
+                   
                     <hr class="mb-4">
-                    <button class="btn btn-primary btn-lg btn-block btn-danger" type="submit">Continue to checkout</button>
-                  </form>
+                    <!-- <button class="btn btn-primary btn-lg btn-block btn-danger" type="submit">Continue to checkout</button> -->
+                 
                 </div>
               </div>
     </div>
 </section>
 
 <script src="https://js.stripe.com/v3/"></script>
-<script src="js/payement.js"></script>`
+<script > 
+ var stripe = Stripe('pk_test_cNqxVKxkd7Ftt62as1tsvj50');
+  
+  // Create an instance of Elements.
+  var elements = stripe.elements();
+  
+  // Custom styling can be passed to options when creating an Element.
+  // (Note that this demo uses a wider set of styles than the guide below.)
+  var style = {
+    base: {
+      color: '#32325d',
+      lineHeight: '18px',
+      fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+      fontSmoothing: 'antialiased',
+      fontSize: '16px',
+      '::placeholder': {
+        color: '#aab7c4'
+      }
+    },
+    invalid: {
+      color: '#aab7c4',
+      iconColor: '#fa755a'
+    }
+  };
+  
+  // Create an instance of the card Element.
+  var card = elements.create('card', 
+  {style: style,
+  hidePostalCode:true});
+  
+  // Add an instance of the card Element into the `card-element` <div>.
+  card.mount('#card-element');
+  
+  // Handle real-time validation errors from the card Element.
+  card.addEventListener('change', function(event) {
+    var displayError = document.getElementById('card-errors');
+    if (event.error) {
+      displayError.textContent = event.error.message;
+    } else {
+      displayError.textContent = '';
+    }
+  });
+  
+  // Create a token or display an error when the form is submitted.
+var form = document.getElementById('payment-form');
+form.addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  stripe.createToken(card).then(function(result) {
+    if (result.error) {
+      // Inform the customer that there was an error.
+      var errorElement = document.getElementById('card-errors');
+      errorElement.textContent = result.error.message;
+    } else {
+      // Send the token to your server.
+      stripeTokenHandler(result.token);
+    }
+  });
+});
+
+  function stripeTokenHandler(token) {
+  // Insert the token ID into the form so it gets submitted to the server
+  var form = document.getElementById('payment-form');
+  var hiddenInput = document.createElement('input');
+  hiddenInput.setAttribute('type', 'hidden');
+  hiddenInput.setAttribute('name', 'stripeToken');
+  hiddenInput.setAttribute('value', token.id);
+  form.appendChild(hiddenInput);
+
+
+  // Submit the form
+  form.submit();
+}
+</script>
 <%include ../partials/footer%>

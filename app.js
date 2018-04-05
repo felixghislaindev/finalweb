@@ -15,6 +15,7 @@ var express = require("express"),
   Cart = require("./models/ShoppingCart"),
   Comment = require("./models/comment"),
   Product = require("./models/Product"),
+  Order = require("./models/orders"),
   validator =  require("express-validator"),
   Mongostore = require("connect-mongo")(session),
   methodOverride = require("method-override"); 
@@ -26,6 +27,9 @@ var classesRoutes = require("./routes/Classes"),
     StoreRoutes   = require("./routes/store"),
     BlogRoutes    = require("./routes/blog");
 // require routes
+var stripe = require("stripe")("sk_test_4MDk0NmsXeYt1yVBpiwNrLQF");
+
+// Token is created using Checkout or Elements!
 
 
 
@@ -69,6 +73,7 @@ app.use(function(req,res,next){
  app.use(StoreRoutes);
  app.use(BlogRoutes);
 
+ 
 
 //reaching the home page
 //define the index page route
@@ -86,15 +91,6 @@ app.get("/about", function (req, res) {
 app.get("/contact", function (req, res) {
   res.render("contact");
 });
-
-
-
-
-
-
-
-
-
 
 
 
@@ -130,15 +126,46 @@ app.get("/checkout", function(req,res){
     return res.redirect("/card");
   } else{
     var cart = new Cart(req.session.cart);
-    res.render("./store/checkout", {products: cart.generateArray(),totalPrice: cart.totalPrice});
+    res.render("./store/checkout", {products: cart.generateArray(),totalPrice: cart.totalPrice });
   }
-
-  
 });
+app.post("/charge", function(req,res){
+
+  if(!req.session.cart){
+    return res.redirect("/card");
+  }
+var token = req.body.stripeToken;
+var cart = new Cart(req.session.cart);
+
+var chargeamount = cart.totalPrice * 100;
+//Charge the user's card:
+stripe.charges.create({
+  amount: chargeamount,
+  currency: "GBP",
+  description: "Example charge",
+  source: token,
+}, function(err, charge) {
+    if(err){
+      console.log(err);
+    }
+    var order = new Order({
+      user: req.user,
+      cart: cart,
+      address: req.body.address,
+      name: req.body.firstname,
+      payementId: charge.id
+    });
+    order.save();
+    req.session.cart = null;
+    res.redirect("/");
+});
+
+});
+
 
 
 
 app.listen(3000, function () {
   console.log("server is on!!");
 
-});
+})
