@@ -16,28 +16,58 @@
 
 <!-- blog post section -->
 <section class="blog-post">
-    <div class="container">
-            <%for(var i = 0; i < foundblog.length;i++){%>
-        <div class="row">
-                
-            <div class="col-lg-5">
-                <img class="blog-img rounded" src="<%= foundblog[i].blogImage%>" alt="">
-            </div>
-            <div class="col-lg-7">
-                <h2><%= foundblog[i].blogTitle%></h2>
-                <p><%= foundblog[i].blogDescription.substring(0,200) %>...</p>
-                
-                <a href="/blog/<%= foundblog[i]._id%>" class="btn btn-success text-white">Read More</a>
-            </div>
-          
-        </div>
-        <hr class="mb-5 mt-4 pb-3">
-        <%}%>   
-      
+    <div class="container mb-4">
+        
+            <ul class="nav justify-content-end">
+                    <li class="nav-item">
+                      <a class="nav-link " href="#">Gym</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Activities</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">General</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link " href="#">Tips</a>
+                    </li>
+                    <li class="nav-item">
+                            <a class="nav-link " href="#">Newbies</a>
+                          </li>
+                  </ul> 
     </div>
      
-   
     
+    
+</section>
+
+<section>
+    <div class="container">
+        <div class="card-columns">
+               
+                <%for(var i = 0; i < foundblog.length;i++){%>
+                <div class="card border-0">
+                   
+                            <h5 class="card-title text-center"><%= foundblog[i].blogTitle%></h5>
+                    
+                      
+                   <a href="/blog/<%= foundblog[i]._id%>">
+                                <img class="card-img-top" src="<%= foundblog[i].blogImage%>" alt="Card image cap">
+                        </a>
+                  <div class="card-body">
+                   
+                    <p class="card-text"><%= foundblog[i].blogDescription.substring(0,200) %>...</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                  </div>
+                </div>
+                <%}%>   
+               
+                </div>
+                
+             
+               
+              </div>
+            
 </section>
 
 <%include ../partials/footer%>

@@ -1,0 +1,63 @@
+body{
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    color: #5f727f;
+    background-color: #ffffffff;
+}
+.team-card {
+    width: 250px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+}
+.whysec{
+ 
+    height:  600px;
+    padding-top: 80px;
+    margin-bottom: 70px;
+    
+   
+} 
+.whysec h4{
+font-weight: 900;
+padding-bottom : 10px;
+color: #dc3545;
+}
+.team-text h2{
+    font-weight: bold;
+    font-size: 30px;
+    color: #dc3545;
+}
+.whyrow{
+    padding-top: 60px;
+   
+    font-size: 16px;
+}
+.icon{
+    font-size: 20px;
+    padding: 10px;
+}
+.fa-facebook-square{
+    background-color: transparent;
+    color: rgb(59, 89, 152);
+    
+}
+.fa-twitter-square{
+    background-color: transparent;
+    color: rgb(85, 172, 238);
+  
+}
+.fa-instagram{
+    background-color: transparent;
+    color: rgb(18, 86, 136);
+   
+}
+.fa-youtube-square{
+    background-color: transparent;
+    color: rgb(229, 45, 39);
+}
+.ourteam{
+    padding: 70px 0px;
+}
+.team-sec{
+    padding-top: 80px;
+}

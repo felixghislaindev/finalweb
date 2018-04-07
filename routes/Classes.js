@@ -2,8 +2,10 @@ var express = require("express");
 var router = express.Router();
 var  Class   = require("../models/class");
      
+
 //show all the classes
 router.get("/classes", function (req, res) {
+ 
     Class.find({}, function (err, foundclasses) {
       if (err) {
         console.log("not found");
@@ -31,6 +33,8 @@ router.get("/classes", function (req, res) {
     });
   
   });
-
+function escapeREgexpress(text){
+  return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
   module.exports = router;
   
