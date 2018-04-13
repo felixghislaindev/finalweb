@@ -27,44 +27,36 @@
 </section>
 
 <!-- overview -->
-<section class="classes">
-      <!-- partial -->
-    
-<div class="container">
-        <h2 class="text-center">ADD A NEW BLOG POST</h2>
-        <div class="row justify-content-md-center">
-            
-            <div class="col-md-6 col-md-auto ">
-                <form action="/cmsblog/newblog" class="" method="POST">
-                    <div class="col-md-12">
-                            <label for="exampleInputEmail1">Blog Title</label>
-                            <input  class="form-control"  name="Blogtitle"  placeholder="Blog Title">
-                    </div>
-                    <div class="col-md-12">
-                            <label for="exampleInputEmail1">Blog Image</label>
+      <section>
+            <div class="container">
+                    <h2 class="text-center">ADD A NEW BLOG POST</h2>
+                  <form action="/cmsblog/newblog" class="" method="POST">
+                          <div class="form-row">
+                            <div class="form-group col-md-6">
+                                    <label for="exampleInputEmail1">Blog Title</label>
+                                    <input  class="form-control"  name="Blogtitle"  placeholder="Blog Title">
+                            </div>
+                            <div class="form-group col-md-6">
+                                    <label for="exampleInputEmail1">Blog Image</label>
                             <input  class="form-control" name="Blogimage"  placeholder="Blog Image">
-                    </div>
-                    <div class="col-md-12">
-                            <label for="comment">Blog Description:</label>
-                            <textarea class="form-control" rows="5" name="Blogdescription" id="comment"></textarea>
-                            
-                    </div>
-                    <div class="col-md-12">
-                            <label for="comment">Blog Author:</label>
-                            <input  class="form-control" rows="5" name="Blogauthor" id="comment">
-                            
-                    </div>
-                    <button class=" btn btn-lg btn-block">POST</button>
-                    
-                </form>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                                <label for="comment">Blog Author:</label>
+                                <input  class="form-control" rows="5" name="Blogauthor" id="comment">
+                          </div>
+                         
+                         
+                          <div class="form-group col-md-12">
+                             
+                                <label for="comment">Blog Description:</label>
+                                <textarea class="form-control" rows="5" name="Blogdescription" id="comment"></textarea>
+                                  </div>
+                          
+                          <button type="submit" class="btn btn-primary">SUBMIT</button>
+                        </form>
             </div>
-        </div>
-    </div>
-      
-          
-       
-      </section>
-
+        </section>
 
        <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->

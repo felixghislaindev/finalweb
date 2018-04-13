@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 var  Class   = require("../models/class"),
      Blog    = require("../models/blog"),
-     Product = require("../models/blog");
+     Product = require("../models/Product");
 
 // define rout for content management 
 router.get("/cms", function (req, res) {
@@ -218,7 +218,7 @@ router.get("/cms", function (req, res) {
       if(err){
         console.log(err);
       } else {
-        console.log(ProductType);
+        console.log( "new product is"+ newProduct);
        
         res.redirect("/cmsstore");
       }
