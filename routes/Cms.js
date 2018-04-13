@@ -2,7 +2,32 @@ var express = require("express");
 var router = express.Router();
 var  Class   = require("../models/class"),
      Blog    = require("../models/blog"),
-     Product = require("../models/Product");
+     Product = require("../models/Product"),
+     multer = require('multer'),
+     cloudinary = require('cloudinary');
+
+
+
+var imgstorage = multer.diskStorage({
+  filename: function(req, file, callback) {
+    callback(null, Date.now() + file.originalname);
+  }
+});
+var imgFilter = function (req, file, cb) {
+    // will accept file shown bellow only
+    if (!file.originalname.match(/\.(jpg|jpeg|png|gif)$/i)) {
+        return cb(new Error('will only allow certain type of file!'), false);
+    }
+    cb(null, true);
+};
+var upload = multer({ storage: imgstorage, fileFilter: imgFilter});
+
+
+cloudinary.config({ 
+  cloud_name: 'ragefitness', 
+  api_key: "781792735121654", 
+  api_secret:"dRhp7_rcrh1CWbf5-0gdQ535AWU"
+});
 
 // define rout for content management 
 router.get("/cms", function (req, res) {
@@ -28,18 +53,35 @@ router.get("/cms", function (req, res) {
     res.render("./cms/newclass");
   
   });
-  router.post("/cmsclass/newclass", function (req, res) {
+  router.post("/cmsclass/newclass",upload.single('Classimage') ,function (req, res) {
+    cloudinary.v2.uploader.upload(req.file.path, function(err, result) {
+      if(err) {
+       
+        return res.redirect('back');
+      }
+      // add cloudinary img url
+      req.body.Classimage = result.secure_url;
+      req.body.imageId = result.public_id;
+      console.log(result.public_id);
+
+      
+     
+     
+    
     var className = req.body.classname;
-    var classType = req.body.classtype;
-    var classImage = req.body.classimage;
-    var classDescription = req.body.classdescription;
-    var classDay = req.body.classday;
-    var classStartTime = req.body.classStartTime;
-    var classEndTime = req.body.classEndTime;
-    var classInfo = req.body.classInfo;
-    var newclass = {
+        classType = req.body.classtype,
+        classImage = req.body.Classimage,
+        classImageId = req.body.imageId,
+        classDescription = req.body.classdescription,
+        classDay = req.body.classday,
+        classStartTime = req.body.classStartTime,
+        classEndTime = req.body.classEndTime,
+        classInfo = req.body.classInfo;
+
+     newclass = {
       className: className,
       classType: classType,
+      classImageId: classImageId,
       classImage: classImage,
       classDescription: classDescription,
       classDay: classDay,
@@ -50,6 +92,7 @@ router.get("/cms", function (req, res) {
     Class.create(newclass, function (err, newclass) {
       if (err) {
         console.log(err);
+        return res.redirect("back");
       } else {
        
        res.redirect("/cmsclass");
@@ -58,7 +101,7 @@ router.get("/cms", function (req, res) {
   
   
   });
-  
+});
   // EDIT CLASSES   
   router.get("/cmsclass/:id/editclass", function (req, res) {
   Class.findById(req.params.id, function(err, foundclass){
@@ -67,28 +110,48 @@ router.get("/cms", function (req, res) {
   });
   
   //UPDATE CLASSES
-  router.put("/cmsclass/:id",function(req,res){
-    Class.findByIdAndUpdate(req.params.id,{
-      className:        req.body.classname,
-      classType:        req.body.classtype,
-      classImage:       req.body.classimage,
-      classDescription: req.body.classdescription,
-      classInfo:        req.body.classInfo,
-      classDay:         req.body.classday,
-      classStartTime:   req.body.classStartTime,
-      classEndTime:     req.body.classEndTime
+  router.put("/cmsclass/:id", upload.single("Classimage"),  function(req,res){
    
-    }, function(err, udpatedclass){
+    Class.findById(req.params.id,async function(err, udpatedclass){
   
     if(err){
         console.log(err);
        } else{
+        if(req.file){
+          try {
+            await cloudinary.v2.uploader.destroy(udpatedclass.classImageId);
+            var result = await cloudinary.v2.uploader.upload(req.file.path);
+            udpatedclass.classImageId = result.public_id;
+            udpatedclass.classImage = result.secure_url;
+          } catch (err){
+            console.log(err);
+            return res.redirect("back");
+          }
+         
+         }
+        
+        
+         
+         udpatedclass.className =       req.body.classname;
+         udpatedclass.classType =       req.body.classtype;
+         udpatedclass.classDescription = req.body.classdescription,
+         udpatedclass.classInfo =        req.body.classInfo,
+         udpatedclass.classDay =        req.body.classday,
+         udpatedclass.classStartTime =   req.body.classStartTime,
+         udpatedclass.classEndTime =    req.body.classEndTime
+          udpatedclass.save();
+          console.log("sucessfully updated");
+        
         res.redirect("/cmsclass");
        }
   
     });
   });
   
+
+  {
+  
+  }
   //DELETE/ DESTROY CLASSES
   router.delete("/cmsclass/:id", function(req, res){
     Class.findByIdAndRemove(req.params.id, function(err){

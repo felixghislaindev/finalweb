@@ -5,6 +5,7 @@ var mongoose = require("mongoose");
 // class schema setup
 var classSchema = new mongoose.Schema({
     className: String,
+    classImageId: String,
     classImage: String,
     classType: String,
     classDescription: String,

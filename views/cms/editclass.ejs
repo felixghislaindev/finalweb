@@ -29,41 +29,28 @@
 
 <section class="showclass">
     <div class="container">
-      
-              
-       
-        
-        <h2 class="text-center">EDIT <%=Class.className%></h2>
-        <div class="row justify-content-md-center">
-            
-            <div class="col-md-6 col-md-auto ">
-                <form action="/cmsclass/<%=Class._id%>?_method=PUT" class="" method="POST">
-                    <div class="col-md-12">
-                            <label for="exampleInputEmail1">Class Name:</label>
-                            <input type="text" class="form-control"   name="classname" placeholder="Class Name" value="<%=Class.className%>">
+          <h2 class="text-center">ADD A NEW CLASS</h2>
+          <form form action="/cmsclass/<%=Class._id%>?_method=PUT" class="" method="POST" enctype="multipart/form-data" >
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="class">Class Name:</label>
+                        <input type="text" class="form-control" name="classname" placeholder="Class Name" value="<%=Class.className%>">
                     </div>
-                    <div class="col-md-12">
-                            <label for="exampleInputEmail1">Class Type:</label>
-                            <input type="text" class="form-control"   name="classtype" placeholder="Class Type" value="<%=Class.classType%>">
+                    <div class="form-group col-md-6">
+                        <label for="classType">Class Type:</label>
+                        <input type="text" class="form-control"   name="classtype" placeholder="Class Type" value="<%=Class.classType%>">
                     </div>
-                    <div class="col-md-12">
-                            <label for="exampleInputEmail1">Class Image:</label>
-                            <input type="text" class="form-control"   name="classimage" placeholder="Class Image" value="<%=Class.classImage%>">
-                    </div>
-                   
-                    <div class="col-md-12">
-                            <label for="comment">Class Description:</label>
-                            <input type="text" class="form-control" name = "classdescription" placeholder="Product Size"value="<%=Class.classDescription%>">
-                            
-                    </div>
-                    <div class="col-md-12">
-                            <label for="comment">Class Info:</label>
-                            <textarea type="text" class="form-control" name = "classInfo" placeholder="Product Size">
-                                    <%=Class.classInfo%>
-                                </textarea>
-                            
-                    </div>
-                    <div class="col-md-12">
+                  </div>
+                  <div class="form-group">
+                          <label for="image">Class Image:</label>
+                          <input type="file"  id="image" name="Classimage" placeholder="Class Image" accept="image/*">
+                  </div>
+                  <div class="form-group">
+                    <label for="comment">Class Description:</label>
+                    <input type="text" class="form-control" name = "classdescription" placeholder="Product Size"value="<%=Class.classDescription%>">
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
                         <label for="comment">Class Day:</label>
                         <select name="classday" class="custom-select"value="<%=Class.classDay%>">
                             <option value="Monday">Monday</option>
@@ -75,30 +62,29 @@
                             <option value="Sunday">Sunday</option>
                           </select>
                         
-                </div>
-                <div class="col-md-12">
+                    </div>
+                    <div class="form-group col-md-4">
                         <label for="comment">Class Start Time:</label>
                         <input type="text" class="form-control" name = "classStartTime" placeholder="" value="<%=Class.classStartTime%>">
-                            
-                        
-                </div>
-                <div class="col-md-12">
-                        <label for="comment">Class Start Time:</label>
-                        <input type="text" class="form-control" name = "classEndTime" placeholder=""value="<%=Class.classEndTime%>">
-                            
-                        
-                </div>
-
-                    <button class=" btn btn-lg btn-block">SUBMIT</button>
-                   
+                    </div>
+                    <div class="form-group col-md-2">
+                          <label for="comment">Class End Time:</label>
+                          <input type="text" class="form-control" name = "classEndTime" placeholder=""value="<%=Class.classEndTime%>">
+                    </div>
+                  </div>
+                  <div class="form-group col-md-12">
+                     
+                          <label for="comment">Class Info:</label>
+                          <textarea type="text" class="form-control" name = "classInfo" placeholder="Product Size" required>
+                              </textarea>
+                          </div>
+                  
+                  <button type="submit" class="btn btn-primary">SUBMIT</button>
                 </form>
                 <form action="/cmsclass/<%=Class._id%>/?_method=DELETE" method="POST">
-                    <button>Delete</button>
+                    <button type="submit" class="btn btn-primary" >Delete</button>
                     </form>
-            </div>
-        </div>
     </div>
-    
 </section>
 
 

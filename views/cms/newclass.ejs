@@ -30,33 +30,33 @@
       <section>
           <div class="container">
                 <h2 class="text-center">ADD A NEW CLASS</h2>
-                <form form action="/cmsclass/newclass" class="" method="POST">
+                <form form action="/cmsclass/newclass" class="" method="POST" enctype="multipart/form-data"required>
                         <div class="form-row">
                           <div class="form-group col-md-6">
                             <label for="inputEmail4">Class Name:</label>
-                            <input type="text" class="form-control"   name="classname" placeholder="Class Name">
+                            <input type="text" class="form-control"   name="classname" placeholder="Class Name" required>
                           </div>
                           <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Class Type:</label>
-                                <input type="text" class="form-control"   name="classtype" placeholder="Class Type">
+                                <input type="text" class="form-control"   name="classtype" placeholder="Class Type" required>
                           </div>
                         </div>
                         <div class="form-group">
-                                <label for="exampleInputEmail1">Class Image:</label>
-                                <input type="text" class="form-control"   name="classimage" placeholder="Class Image">
+                                <label for="image">Class Image:</label>
+                                <input type="file"  id="image" name="Classimage" placeholder="Class Image" accept="image/*" required>
                         </div>
                         <div class="form-group">
                                 <label for="comment">Class Description:</label>
-                                <input type="text" class="form-control" name = "classdescription" placeholder="Product Size">
+                                <input type="text" class="form-control" name = "classdescription" placeholder="Product Size" required>
                         </div>
                         <div class="form-row">
                           <div class="form-group col-md-6">
                                 <label for="comment">Class Day:</label>
-                                <select name="classday" class="custom-select">
+                                <select name="classday" class="custom-select" required>
                                     <option value="Monday">Monday</option>
                                     <option value="Tuesday">Tuesday</option>
                                     <option value="Wenesday">Wenesday</option>
-                                    <option value="Thursaday">Thursaday</option>
+                                    <option value="Thursaday">Thursday</option>
                                     <option value="Friday">Friday</option>
                                     <option value="Saturday">Saturday</option>
                                     <option value="Sunday">Sunday</option>
@@ -64,17 +64,17 @@
                           </div>
                           <div class="form-group col-md-4">
                                 <label for="comment">Class Start Time:</label>
-                                <input type="text" class="form-control" name = "classStartTime" placeholder="">
+                                <input type="text" class="form-control" name = "classStartTime" placeholder="" required>
                           </div>
                           <div class="form-group col-md-2">
                                 <label for="comment">Class End Time:</label>
-                                <input type="text" class="form-control" name = "classEndTime" placeholder="">
+                                <input type="text" class="form-control" name = "classEndTime" placeholder="" required>
                           </div>
                         </div>
                         <div class="form-group col-md-12">
                            
                                 <label for="comment">Class Info:</label>
-                                <textarea type="text" class="form-control" name = "classInfo" placeholder="Product Size">
+                                <textarea type="text" class="form-control" name = "classInfo" placeholder="Product Size" required>
                                     </textarea>
                                 </div>
                         
