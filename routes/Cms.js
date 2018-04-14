@@ -186,14 +186,26 @@ router.get("/cms", function (req, res) {
   router.get("/cmsblog/newblog", function (req, res) {
     res.render("./cms/newblog");
   });
-  router.post("/cmsblog/newblog", function(req,res){
+  router.post("/cmsblog/newblog",upload.single('Blogimage') ,function(req,res){
+    cloudinary.v2.uploader.upload(req.file.path, function(err, result) {
+      if(err) {
+       
+        return res.redirect('back');
+      }
+      // add cloudinary img url
+      req.body.Blogimage = result.secure_url;
+      req.body.imageId = result.public_id;
+      console.log(result.public_id);
+
     var blogTitle = req.body.Blogtitle;
+    var imageId = req.body.imageId;
     var blogImage = req.body.Blogimage;
     var blogDescription = req.body.Blogdescription;
     var blogAuthor = req.body.Blogauthor;
     
     var newblog = {
       blogTitle:blogTitle,
+      imageId:imageId,
       blogImage:blogImage,
       blogDescription: blogDescription,
       blogAuthor:blogAuthor
@@ -206,12 +218,14 @@ router.get("/cms", function (req, res) {
         res.redirect("/cmsblog");
       }
     })
+  })
   
   });
   
   // UPDATE BLOG 
   // find the specific blog and display on the edit blog page
   router.get("/cmsblog/:id/editblog", function (req, res) {
+  
     Blog.findById(req.params.id, function(err, foundblog){
       if(err){
         console.log(err);
@@ -223,19 +237,35 @@ router.get("/cms", function (req, res) {
   });
   
   //update changes made to the blog 
-  router.put("/cmsblog/:id", function(req,res){
-    Blog.findByIdAndUpdate(req.params.id, {
-      blogTitle : req.body.Blogtitle,
-      blogImage : req.body.Blogimage,
-      blogDescription: req.body.Blogdescription 
-    }, function(err, updatedblog){
+  router.put("/cmsblog/:id",upload.single('Blogimage') ,function(req,res){
+    Blog.findById(req.params.id,async function(err, updatedblog){
+
       if(err){
         console.log(err);
-      } else{
-        res.redirect("/cmsblog");
-      }
-    });
-  });
+       } else{
+        if(req.file){
+          try {
+            await cloudinary.v2.uploader.destroy(updatedblog.imageId);
+            var result = await cloudinary.v2.uploader.upload(req.file.path);
+            updatedblog.imageId = result.public_id;
+            updatedblog.blogImage = result.secure_url;
+          } catch (err){
+            console.log(err);
+            return res.redirect("back");
+          }
+         
+         }
+
+    
+         updatedblog.blogTitle = req.body.Blogtitle;
+         updatedblog.blogDescription= req.body.Blogdescription;
+         updatedblog.save();
+         res.redirect("/cmsblog");
+         console.log("sucessfully updated");
+        }
+        });
+      });
+
   
   //DELETE/ DESTROY BLOG
   
@@ -259,34 +289,55 @@ router.get("/cms", function (req, res) {
   }); 
   
   // define route to aad new product
-  router.post("/cmsprod", function(req,res){
+  router.post("/cmsprod",upload.single('Productimage') ,function(req,res){
+    cloudinary.v2.uploader.upload(req.file.path, function(err, result) {
+      if(err) {
+       
+        return res.redirect('back');
+      }
+         // add cloudinary img url
+         req.body.Productimage = result.secure_url;
+         req.body.imageId = result.public_id;
+         console.log(result.public_id);
+
     var ProductImage = req.body.Productimage;
-    var ProductTitle =  req.body.Productname;
-    var ProductDescription = req.body.Productdescription;
-    var ProductPrice = req.body.Productprice;
-    var ProductType = req.body.Producttype;
-    var ProductSize = req.body.Productsize;
+        ProductTitle =  req.body.Productname;
+        ImageId = req.body.imageId;
+        ProductDescription = req.body.Productdescription;
+        ProductPrice = req.body.Productprice;
+        ProductType = req.body.Producttype;
+        ProductSize = req.body.Productsize;
+        Keywords = req.body.Tags;
+
+   
+        
   
     var newProduct = {
       ProductImage:ProductImage,
+      ImageId:ImageId,
       ProductTitle:ProductTitle,
+      Keywords:Keywords,
       ProductDescription: ProductDescription,
       ProductPrice: ProductPrice,
       ProductType: ProductType,
-      ProductSize : ProductSize
+      ProductSize : ProductSize,
+      
   
     } 
+    console.log( "new product is"+ newProduct);
   
     Product.create(newProduct, function(err, newProduct){
       if(err){
         console.log(err);
       } else {
-        console.log( "new product is"+ newProduct);
+       
+        
        
         res.redirect("/cmsstore");
       }
     });
   });
+});
   
   // define route to view product in the database
   router.get("/cmsviewprod", function (req, res) {
@@ -313,23 +364,55 @@ router.get("/cms", function (req, res) {
   });
   
   // updte the product 
-  router.put("/cmsviewprod/:id", function(req,res){
-  Product.findByIdAndUpdate(req.params.id, {
-    ProductImage:req.body.ProductImage,
-    ProductTitle:req.body.ProductTitle,
-    ProductDescription: req.body.ProductDescription,
-    ProductPrice: req.body.ProductPrice,
-    ProductType: req.body.ProductType,
-    ProductSize : req.body.ProductSize
-  }, function(err,Updatedprod){
-    if(err){
-      console.log(err)
-    } else{
-      console.log(  req.body.ProductType);
-      res.redirect("/cmsviewprod");
-    }
-  });
-  });
+  router.put("/cmsviewprod/:id",upload.single('Productimage') ,function(req,res){
+         Product.findById(req.params.id,async function(err, Updatedprod){
+
+          if(err){
+            console.log(err);
+           } else{
+            if(req.file){
+              try {
+                await cloudinary.v2.uploader.destroy(Updatedprod.ProductImage);
+                var result = await cloudinary.v2.uploader.upload(req.file.path);
+                Updatedprod.ImageId = result.public_id;
+                Updatedprod.ProductImage = result.secure_url;
+              } catch (err){
+                console.log(err);
+                return res.redirect("back");
+              }
+             
+             }
+    
+             Updatedprod.ProductTitle = req.body.ProductTitle,
+             console.log(req.body.ProductTitle);
+             Updatedprod.ProductDescription = req.body.ProductDescription,
+             console.log( Updatedprod.ProductDescription);
+             Updatedprod.ProductPrice = req.body.ProductPrice,
+             console.log(Updatedprod.ProductPrice);
+             Updatedprod.ProductType =  req.body.ProductType,
+             console.log( Updatedprod.ProductType);
+             Updatedprod.ProductSize  = req.body.ProductSize
+             console.log(Updatedprod.ProductSize);
+             Updatedprod.save();
+
+             
+             res.redirect("/cmsviewprod");
+             console.log("sucessfully updated");
+            }
+         })
+        })
+             
+          
+    
+        
+          
+          
+          
+         
+      
+        
+       
+
   
   //Delete/Destroy the product
   router.delete("/cmsviewProd/:id", function(req,res){

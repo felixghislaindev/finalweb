@@ -27,50 +27,49 @@
 </section>
 
 <!-- overview -->
-<section class="clasess ">
+<section> 
       <!-- partial -->
-    
-<div class="container">
+    <div class="container"> 
         <h2 class="text-center">ADD A PRODUCT</h2>
-        <div class="row justify-content-md-center">
-            
-            <div class="col-md-6 col-md-auto ">
-                <form action="/cmsprod" method="POST" class="">
-                    <div class="col-md-12">
-                        <label for="exampleInputEmail1">Product Image:</label>
-                        <input type="text" class="form-control"  placeholder="Product Type" name="Productimage">
-                </div>
-                    <div class="col-md-12">
+                <form action="/cmsprod" method="POST" enctype="multipart/form-data"required>
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
                             <label for="exampleInputEmail1">Product Name:</label>
                             <input type="text" class="form-control"  placeholder="Product Name" name="Productname">
-                    </div>
-                    <div class="col-md-12">
+                      </div>
+                      <div class="form-group col-md-6">
                             <label for="exampleInputEmail1">Product Type:</label>
                             <input type="text" class="form-control"  placeholder="Product Type" name="Producttype">
+                      </div>
                     </div>
-                    <div class="col-md-12">
+                    <div class="form-group">
                             <label for="exampleInputEmail1">Product Price:</label>
                             <input type="number" class="form-control"  placeholder="Product Price" name="Productprice">
                     </div>
-                    <div class="col-md-12">
+                    <div class="form-group">
                             <label for="exampleInputEmail1">Product Size:</label>
                             <input type="text" class="form-control"  placeholder="Product Size" name="Productsize">
                     </div>
-                    <div class="col-md-12">
+                    <div class="form-group">
+                            <label for="image">Class Image:</label>
+                            <input type="file"  id="image" name="Productimage" placeholder="Pdoduct Image" accept="image/*" required>
+                    </div>
+                    <div class="form-row">
+                      
+                      <div class="form-group col-md-4">
+                            <label for="comment">Tags:</label>
+                            <input type="text" class="form-control" name = "Tags" placeholder="">
+                      </div>
+                    <div class="form-group col-md-12">
+                       
                             <label for="">Product Description:</label>
                             <textarea class="form-control" rows="5" id=""name="Productdescription"></textarea>
-                            
-                    </div>
-                    <button type="submit" class="btn btn-primary">SUBMIT</button>
+                            </div>
                     
-                </form>
-            </div>
-        </div>
-    </div>
-      
-          
-       
-      </section>
+                    <button type="submit" class="btn btn-primary">SUBMIT</button>
+                  </form>
+                </div>
+</section>
 
 
        <!-- Optional JavaScript -->

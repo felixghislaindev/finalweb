@@ -1,34 +1,62 @@
 <%include ../partials/header%>
 <%include ../partials/nav%>
-<section class="store">
+<section style="background-image: url(images/producthero.jpg); width: 100%; min-height: 539px; background-size: cover; background-position: center 0; background-repeat: no-repeat;">
+
+ 
+
+</section>
+<section class="store p-t-55 p-b-65">
     <!-- <div class="container"> -->
         <h2 class="text-center">STORE</h2>
         <p></p>
         <div class="conatiner text-center"> 
                 <h3>RAGE FITNESS</h3>
-                <p>ALL</p>
+              
             </div>
             
+
+            <div class="container">
 
             
         <div class="row">
             
-                <div class="col-lg-2">
+                <div class=" col-sm-12 col-md-4 col-lg-3" >
                         <ul class="list-group list-group-flush">
-                                <li class="list-group-item">All Products</li>
-                                <li class="list-group-item">Base Layers</li>
-                                <li class="list-group-item">Bottoms</li>
-                                <li class="list-group-item">T-Shirts & Tops</li>
+                                <li class="list-group-item text-muted">SHOP BY CATEGORY</li>
+                                <li class="list-group-item t"><a href="/store" class="text-dark">All Products</a> </li>
+                                <li class="list-group-item"><a href="/Accessories" class="text-dark">Accessories</a></li>
+                                <li class="list-group-item"><a href="/HOODIES" class="text-dark">HOODIES</a></li>
+                                <li class="list-group-item"><a href="/tshirt" class="text-dark">T-Shirts</a></li>
                                 
                               </ul>
+                          
+                              <h4 style="padding-left: 20px; padding-top: 30px">Filter</h4>
+                          
+                                            
+                              <div class="dropdown show" style="padding-left: 20px; padding-top: 10px">
+                                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                     Price
+                                    </a>
+                                  
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                      <a class="dropdown-item" href="#">£0 - £15</a>
+                                      <a class="dropdown-item" href="#">£0 - £25</a>
+                                      <a class="dropdown-item" href="#">£0 - £50</a>
+                                    </div>
+                                  </div>
+                 
+               
                               
                 </div>
-                <div class="col-lg-9">
-                        <div class="card-deck">
+                
+                
+                    
+                <div class="col-sm-12 col-md-7 col-lg-9">
+                        <div class="row">
                         <%for(var i = 0; i < foundproduct.length;i++){%>
                    
                           
-                                <div class="col-lg-3 col-md-6 col-sm-10" style="padding-top:15px;">
+                                <div class="col-lg-4 col-md-6 col-sm-10 " style="padding-top:15px;" style="max-width: 33.333333%;">
                                         <div class="card " >
                                                 <div class="view overlay">
                                                         <img src="<%=foundproduct[i].ProductImage%>" class="img-fluid" alt="">
@@ -58,9 +86,10 @@
                                               </div>
                                   </div>
                               
-                            
+                                
                              
                               <%}%> 
+                            </div>
                           </div>
                           
                        
@@ -69,7 +98,8 @@
         
       
     </div>
-    </div>
+    
+
 </section>
 
 <%include ../partials/footer%>

@@ -34,18 +34,18 @@
       <div class="row justify-content-md-center">
           
           <div class="col-md-6 col-md-auto ">
-              <form action="/cmsblog/<%=foundblog._id%>?_method=PUT" class="" method="POST">
+              <form action="/cmsblog/<%=foundblog._id%>?_method=PUT" class="" method="POST" enctype="multipart/form-data">
                   <div class="col-md-12">
                           <label for="exampleInputEmail1">Blog Title</label>
                           <input  class="form-control"  name="Blogtitle"  placeholder="Blog Title" value="<%=foundblog.blogTitle%>">
                   </div>
                   <div class="col-md-12">
-                          <label for="exampleInputEmail1">Blog Image</label>
-                          <input  class="form-control" name="Blogimage"  placeholder="Blog Image" value="<%=foundblog.blogImage%>">
+                        <label for="image">Class Image:</label>
+                        <input type="file"  id="image" name="Blogimage" placeholder="blog Image" accept="image/*" required>
                   </div>
                   <div class="col-md-12">
                           <label for="comment">Blog Description:</label>
-                          <textarea class="form-control" rows="5" name="Blogdescription" id="comment">
+                          <textarea class="form-control" rows="5" name="Blogdescription" id="Description">
                            <%=foundblog.blogDescription%>
                           </textarea>
                           
