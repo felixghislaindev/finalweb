@@ -15,3 +15,11 @@ $cardred:#EA2027;
         font-size: 12px;
         display: inline-block;
 }
+.zoomefct{
+        position: relative;
+        overflow: hidden;
+        transition: transform .2s;
+} 
+.zoomefct:hover img {
+        transform: scale(1.5);
+}

@@ -1,6 +1,13 @@
 .welcome{
     padding: 10vh 0;
-
+    width: 75%;
+    margin: 0 auto;
+    hr{
+        border-top: 1px solid #b4b4b4;
+        width: 95%;
+        margin-top: 1.5rem;
+        margin-bottom: 1.2rem;
+    }
 }
 
 .class-welcome{
@@ -14,9 +21,10 @@
 }
 .hero2{
    
-    padding-bottom: 8vh;
+    padding-bottom: 20px;;
     height: 650px;
-    margin: 0;
+    
+    
 }
 .shoppingcart{
     padding-top: 18vh;
