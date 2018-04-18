@@ -1,19 +1,36 @@
 
 $cardred:#EA2027;
+$white: #fff;
+
+.classhead{
+        font-weight: $medium; 
+        
+        color: $cardred;
+}
+.classpara{
+        font-size: 18px;
+        padding-top: 15px;
+} 
 .card-img{
         background-color: rgba(0, 0, 0, 0.5);
 }
 
 #class-h{
         line-height: 0;
+        color: $white;
+        text-transform: uppercase;
+        font-weight: $medium;
+        text-shadow: 1px 1px 10px #000;
 }
 #class-p{
         background-color: $cardred;
-        width: 90px;
+        width: 100px;
         text-align: center;
         font-weight: bold;
         font-size: 12px;
         display: inline-block;
+       
+        
 }
 .zoomefct{
         position: relative;

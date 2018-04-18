@@ -2,35 +2,46 @@
 <%include partials/nav%>
 
 
-
 <div class="container login-form">
     <div class="row justify-content-md-center">
         <div class="col-md-6 col-md-auto login-box sign-up">
             <h1 class=" text-center head-text"> Sign Up </h1>
-            <form action="/register" method="POST" class="login-form">
-                <div class="col-md-12">
-                    <input type="text"class="form-control form-control-lg frm-imput" placeholder="FIRST NAME" name="firstname">
-                </div>
-                <div class="col-md-12">
-                    <input type="text"class="form-control form-control-lg frm-imput" placeholder="LAST NAME" name="secondname">
-                </div>
-                <div class="col-md-12">
-                    <input type="text"class="form-control form-control-lg frm-imput" placeholder="username" name="username">
-                </div>
-                <div class="col-md-12">
-                    <input type="password"class="form-control form-control-lg frm-imput" placeholder="password" name="password">
-                </div>
-                <div class="col-md-12">
-                    <input type="text"class="form-control form-control-lg frm-imput" placeholder="EMAIL ADDRESS" name="email">
-                </div>
-                <div class="col-md-12">
-                    <input type="text"class="form-control form-control-lg frm-imput" placeholder="TELEPHONE" name="telephone">
-                </div>
+          
+             
+
+                <!-- <div class="alert alert-danger" role="alert">
+                        <strong>Oh snap!</strong> Change a few things up and try submitting again.
+                      </div> -->
+
+                      <form action="/register" onsubmit="return Validate()" method="POST" class="login-form needs-validation" novalidate>
+                        <div class="col-md-12">
+                                <label for="validationServer01"></label>
+                            <input type="text"class="form-control form-control-lg frm-imput" placeholder="FIRST NAME" name="firstname" id="Firstname">
+                        </div>
+                        <div class="col-md-12">
+                                <label for="validationServer02"></label>
+                            <input type="text"class="form-control form-control-lg frm-imput" placeholder="LAST NAME" name="secondname" id="Secondname">
+                        </div>
+                        <div class="col-md-12">
+                            <label for="validationDefaultUsername"></label>
+                            <input type="text"class="form-control form-control-lg frm-imput" placeholder="username" name="username" id="Username">
+                        </div>
+                        <div class="col-md-12">
+                            <input type="password"class="form-control form-control-lg frm-imput" placeholder="password" name="password" id="Password">
+                        </div>
+                        <div class="col-md-12">
+                            <input type="text"class="form-control form-control-lg frm-imput" placeholder="EMAIL ADDRESS" name="email" id="Emailaddress">
+                        </div>
+                        <div class="col-md-12">
+                            <input type="text"class="form-control form-control-lg frm-imput" placeholder="TELEPHONE" name="telephone" id="Phonenumber">
+                        </div>
+                      
+                        <button class=" btn btn-lg btn-block btn-login" value="Submit">CREATE</button>
+                        
+                    </form>
+                    <a href="#">Return to Store</a>
               
-                <button class=" btn btn-lg btn-block btn-login">CREATE</button>
-                
-            </form>
-            <a href="#">Return to Store</a>
+            
         </div>
         
            

@@ -1,2 +1,152 @@
 // media queries
 
+/* media queries */
+@media(max-width: 992px){
+      
+    .carousel-caption{
+       
+      top: 25%;
+      transform: translateX(18%);
+  } 
+  .carousel-caption h1{
+    
+      text-shadow: 1px 1px 15px #000;
+      font-size: 60px;
+      
+  }
+  .carousel-caption p{
+      font-size: 120%;
+      padding-left: 55px;
+      text-shadow: 1px 1px 10px #000;
+  
+  }
+
+  .row-description{
+    padding: 5vh 0;
+    width: 75%;
+    margin: 0 auto;
+  }
+  .row-description h3{
+    color: #dc3545;
+    padding-bottom: 5px;
+  }
+  .description{
+    padding-bottom: 10px;
+  }
+  .about-us{
+    padding-top: 35px;
+    padding-bottom: 35px;
+  }
+  .whyrow{
+    width: 100%;
+  }
+  .whyrow h4{
+    color: #dc3545;
+  }
+  .whyrow p{
+    font-size: 18px;
+  }
+  .card{
+    width: 100%;
+  }
+  .card-title{
+    color: #dc3545;
+    
+  }
+  .card-text{
+    font-size: 16px;
+    font-weight: 400;
+  }
+  .card-columns {
+    
+    column-count: 2;
+}
+
+  .footer{
+    height: 100%;
+  }
+  }
+  @media(max-width: 768px){
+   
+
+      .carousel-caption{
+       
+          top: 25%;
+          transform: translateX(-18%);
+      } 
+      .carousel-caption h1{
+        
+          text-shadow: 1px 1px 15px #000;
+          font-size: 40px;
+          
+      }
+      .carousel-caption p{
+          font-size: 140%;
+          padding-left: 55px;
+          text-shadow: 1px 1px 10px #000;
+      
+      }
+
+      .row-description{
+        padding: 5vh 0;
+        width: 75%;
+        margin: 0 auto;
+      }
+      .row-description h3{
+        color: #dc3545;
+        padding-bottom: 5px;
+      }
+      .description{
+        padding-bottom: 10px;
+      }
+      .about-us{
+        padding-top: 35px;
+        padding-bottom: 35px;
+      }
+      .whyrow h4{
+        color: #dc3545;
+      }
+      .whyrow p{
+        font-size: 18px;
+      }
+      .card-columns {
+    
+        column-count: 1;
+    }
+      .footer{
+        height: 100%;
+      }
+  }
+  @media(min-width: 1440px){
+    .row-description h3{
+      color: #dc3545;
+      padding-bottom: 5px;
+    }
+    .whyrow h4{
+      color: #dc3545;
+    }
+    .card{
+      width: 100%;
+    }
+    .card-title{
+      color: #dc3545;
+      
+    }
+   
+  }
+  @media(min-width: 1024px){
+    .row-description h3{
+      color: #dc3545;
+      padding-bottom: 5px;
+    }
+    .whyrow h4{
+      color: #dc3545;
+    }
+    .card{
+      width: 100%;
+    }
+    .card-title{
+      color: #dc3545;
+      
+    }}
+  

@@ -5,11 +5,32 @@ var  passport = require("passport"),
      User     = require("../models/User");
   
   // define route for login page
-  router.get("/register", function (req, res) {
+  router.get("/register", function (req, res,) {
     res.render("register");
+ 
+  req.session.errors = null;
+  
   });
   
   router.post("/register", function(req,res){
+    // validate data entered in the form 
+    req.check("firstname", "Please enter your first").isEmpty();
+    req.check("secondname", "Please enter your first").isEmpty();
+    req.check("username", "Please enter your username").isLength({min:4});
+    req.check("email", "Invalid email address").isEmail();
+    req.check("password", "Invalid password").isLength({min:4});
+    req.check("telephone", "Enter a correct phone number").isNumeric().isLength({min:11});
+ var errors = req.validationErrors();
+ console.log(errors);
+//  if(errors){
+//    req.session.errors = errors;
+//    req.session.success = false;
+//    console.log( req.session.errors);
+//  } else{
+//   req.session.success = true;
+//  }
+ 
+
     var newUser = new User ({
       Firstname : req.body.firstname,
       Secondname : req.body.secondname,
@@ -25,7 +46,8 @@ var  passport = require("passport"),
     } else {
       //will log and authenticate the user is register is gone through 
       passport.authenticate("local")(req,res, function (){
-        res.redirect("/");
+        req.flash("success", "Welcome, your are now loggedin");
+        res.redirect("/user");
       });
     }
   });
@@ -33,7 +55,7 @@ var  passport = require("passport"),
   
   // define route for login page
   router.get("/login", function (req, res) {
-    res.render("login");
+    res.render("login", {message:req.flash("error")});
   });
   // resposible for handling login logic 
   router.post("/login",passport.authenticate("local", {
@@ -49,7 +71,7 @@ var  passport = require("passport"),
   });
   router.get("/user",function(req,res){
    
-     res.render("./Profile/userprofile");
+     res.render("./Profile/userprofile", {message : "heloo"});
    });
   
   //  middleware 
@@ -58,6 +80,7 @@ var  passport = require("passport"),
     if(req.isAuthenticated()){
       return next();
     } else{
+   
       res.redirect("/login");
     };
   };

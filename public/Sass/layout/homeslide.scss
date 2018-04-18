@@ -4,7 +4,7 @@ body{
     font-weight: $normal;
     color: #222;
     background-color: #ffffffff;
-    padding-top: 96px;
+    
 }
 .team-card {
     width: 250px;
@@ -94,3 +94,9 @@ color: #dc3545;
 .clasess{
     padding-top: 50px;
 }
+
+// row description hero 2
+.row-description h3{
+    color: #dc3545;
+    padding-bottom: 5px;
+  }

@@ -6,6 +6,7 @@ var express = require("express"),
   mongoose = require("mongoose");
   session = require("express-session");
   passport = require("passport");
+  flash = require("connect-flash");
   LocalStrategy = require("passport-local");
   passportLocalMongoose = require("passport-local-mongoose");
   Class = require("./models/class"),
@@ -51,7 +52,7 @@ app.use(session({
   cookie: {maxAge: 180 * 60 * 1000 }
 }));
 
-
+app.use (flash());
 app.use(methodOverride("_method"));
 //use passport 
 

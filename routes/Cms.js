@@ -435,7 +435,7 @@ router.get("/cms", function (req, res) {
   
   
   // define route for Admin login and sign up 
-  router.get("/cms/signup", function (req, res) {
+  router.get("/cms/signup",function (req, res) {
     //will show admin creation form
     res.render("./cms/AdminSignUp");
   });
@@ -459,7 +459,7 @@ router.get("/cms", function (req, res) {
   });
   
   //login routes 
-  router.get("/cms/login", checkIfAdmin,function (req, res) {
+  router.get("/cms/login",checkIfAdmin,function (req, res) {
     //show admin login form
     console.log(req.user);
     res.render("./cms/login");
