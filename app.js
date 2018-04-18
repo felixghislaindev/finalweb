@@ -35,7 +35,8 @@ var stripe = require("stripe")("sk_test_4MDk0NmsXeYt1yVBpiwNrLQF");
 
 
 // connecting to the database 
-mongoose.connect("mongodb://localhost/rage-fitness");
+// mongoose.connect("mongodb://localhost/rage-fitness");
+mongoose.connect("mongodb://admin:123@ds147459.mlab.com:47459/ragefitness");
 
 
 app.set("view engine", "ejs");
