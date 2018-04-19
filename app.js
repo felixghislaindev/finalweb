@@ -36,7 +36,14 @@ var stripe = require("stripe")("sk_test_4MDk0NmsXeYt1yVBpiwNrLQF");
 
 // connecting to the database 
 // mongoose.connect("mongodb://localhost/rage-fitness");
-mongoose.connect("mongodb://admin:123@ds147459.mlab.com:47459/ragefitness"); 
+// mongoose.connect("mongodb://admin:123@ds147459.mlab.com:47459/ragefitness"); 
+mongoose.Promise = global.Promise;
+
+mongoose.connect("mongodb://admin:123@ds247439.mlab.com:47439/websitetest").then(() => {
+  console.log("Connection is successful");
+}).catch(err => {
+  console.log("Darn, connection failed with this error:", err);
+});
 
 
 app.set("view engine", "ejs");
