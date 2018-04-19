@@ -1,7 +1,6 @@
 var express = require("express"),
   app = express(),
-  http = require('http'),
-  request = require("request"),
+  port = process.env.PORT || 3000,
   bodyparser = require("body-parser"),
   mongoose = require("mongoose");
   session = require("express-session");
@@ -171,7 +170,7 @@ stripe.charges.create({
 
 });
 
-app.listen(3000, function () {
+app.listen(port, function(req,res){
   console.log("server is on!!");
-
-})
+  
+});
