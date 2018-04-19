@@ -86,7 +86,7 @@ app.use(function(req,res,next){
 //reaching the home page
 //define the index page route
 app.get("/", function (req, res) {
-  res.render("Home");
+  res.render("home");
 });
 
 //define the about page route
