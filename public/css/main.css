@@ -607,6 +607,35 @@ input[type="password"], input[type="password"]:focus {
 .zoomefct:hover img {
   transform: scale(1.5); }
 
+.classdetail {
+  padding-top: 10px;
+  font-size: 18px;
+  font-weight: 400;
+  text-align: justify; }
+
+.classtitle {
+  padding-top: 25px;
+  color: #dc3545;
+  font-weight: 700;
+  text-transform: uppercase; }
+
+.health-info {
+  padding-top: 65px; }
+
+.healthinhead {
+  color: #dc3545;
+  text-align: left; }
+
+.healthp {
+  padding-top: 10px;
+  font-size: 18px;
+  font-weight: 400;
+  text-align: left;
+  padding-left: 10px; }
+
+.healthi {
+  padding-left: 8px; }
+
 .blog-intro {
   padding-top: 8vh;
   padding-bottom: 8vh; }
@@ -657,8 +686,35 @@ input[type="password"], input[type="password"]:focus {
   font-weight: 700; }
 
 .blogdetail {
-  font-size: 14px;
+  padding-top: 20px;
+  line-height: 1.7em;
+  font-size: 18px;
+  text-align: left;
+  font-weight: 400;
+  color: #555; }
+
+.blogtitle {
+  padding-bottom: 30px;
+  font-weight: 700;
+  color: #000;
+  font-size: 50px; }
+
+.latepost {
+  padding-top: 50px; }
+
+.latepost.card {
+  width: 15rem;
+  padding-left: 40px; }
+
+.blogcard-body {
+  width: 100%; }
+
+.blogcard-text {
+  font-size: 15px;
   font-weight: 700; }
+
+.catlink {
+  color: #555; }
 
 body {
   font-family: "Lato", sans-serif;

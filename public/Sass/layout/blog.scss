@@ -55,6 +55,40 @@
     font-weight: $medium;
 }
 .blogdetail{
-    font-size: 14px;
+    padding-top: 20px;
+    line-height: 1.7em;
+    font-size: 18px;
+    text-align: left;
+    font-weight: $normal;
+    color: #555;
+}
+
+.blogtitle{
+    padding-bottom: 30px;
     font-weight: $medium;
+    color: #000;
+    font-size: 50px;
+}
+
+// section 2 blog
+.latepost{
+    padding-top: 50px;
+    
+}
+.latepost.card{
+    width: 15rem;
+    padding-left: 40px;
+   
+}
+.blogcard-body{
+    width: 100%;
+}
+.blogcard-text{
+    font-size: 15px;
+    font-weight: $medium;
+}
+
+// category
+.catlink{
+    color: #555;
 }

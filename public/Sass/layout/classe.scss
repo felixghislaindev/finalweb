@@ -40,3 +40,36 @@ $white: #fff;
 .zoomefct:hover img {
         transform: scale(1.5);
 }
+
+// show class information
+.classdetail{
+        padding-top: 10px;
+        font-size: 18px;
+        font-weight: $normal;
+        text-align: justify;
+        
+}
+.classtitle{
+        padding-top: 25px;
+        color: #dc3545;
+        font-weight: $medium;
+        text-transform: uppercase;
+
+}
+.health-info{
+        padding-top: 65px;   
+}
+.healthinhead{
+        color: #dc3545;
+        text-align: left;
+}
+.healthp{
+        padding-top: 10px;
+        font-size: 18px;
+        font-weight: $normal;
+        text-align: left;
+        padding-left: 10px;
+}
+.healthi{
+        padding-left: 8px;
+}
