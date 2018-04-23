@@ -707,7 +707,8 @@ input[type="password"], input[type="password"]:focus {
   padding-left: 40px; }
 
 .blogcard-body {
-  width: 100%; }
+  width: 100%;
+  color: red; }
 
 .blogcard-text {
   font-size: 15px;
