@@ -693,30 +693,6 @@ input[type="password"], input[type="password"]:focus {
   font-weight: 400;
   color: #555; }
 
-.blogtitle {
-  padding-bottom: 30px;
-  font-weight: 700;
-  color: #000;
-  font-size: 50px; }
-
-.latepost {
-  padding-top: 50px; }
-
-.latepost.card {
-  width: 15rem;
-  padding-left: 40px; }
-
-.blogcard-body {
-  width: 100%;
-  color: red; }
-
-.blogcard-text {
-  font-size: 15px;
-  font-weight: 700; }
-
-.catlink {
-  color: #555; }
-
 body {
   font-family: "Lato", sans-serif;
   font-size: 1.2rem;
