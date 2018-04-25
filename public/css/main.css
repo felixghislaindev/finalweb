@@ -673,8 +673,9 @@ input[type="password"], input[type="password"]:focus {
   background-position: center 28%;
   background-repeat: no-repeat; }
 
-.blogtitle {
+.blogtitle1 {
   font-weight: 700;
+  font-size: 32px;
   color: #EA2027;
   text-transform: uppercase; }
 
