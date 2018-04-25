@@ -125,7 +125,7 @@ if(!req.session.cart){
   return res.render("./store/Cart", {products:null});
 }  else{
   var cart = new Cart(req.session.cart);
-  res.render("./store/cart", { products: cart.generateArray(), totalPrice: cart.totalPrice});
+  res.render("./store/Cart", { products: cart.generateArray(), totalPrice: cart.totalPrice});
   
 }
 })
