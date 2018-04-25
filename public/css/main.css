@@ -573,6 +573,13 @@ input[type="password"], input[type="password"]:focus {
     border: 1px solid #fff;
     color: #fff; }
 
+.user {
+  padding-top: 18vh;
+  padding-bottom: 40vh; }
+
+.detailrow {
+  padding-top: 100px; }
+
 .classhead {
   font-weight: 700;
   color: #EA2027; }

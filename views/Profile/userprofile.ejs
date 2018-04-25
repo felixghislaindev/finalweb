@@ -2,11 +2,11 @@
 <%include ../partials/header%>
 <%include ../partials/nav%>
 
-<section class="blog">
+<section class="user">
     <div class="container">
         <h2 class="text-center mb-4">ACCOUNT DETAILS</h2> 
         <% if(currentLogedUser){%>
-        <div class="row">
+        <div class="row detailrow">
             <div class="col-md-3">
                 <h4>Login as</h4>
                 <h6><%=currentLogedUser.username%></h6>
@@ -15,10 +15,10 @@
             </div>
        <% } %>
             <div class="col-md-7">
-                    <a class="text-silenced">Return</a> 
+                    <a class="text-muted ">Return to the store</a> 
             </div>
             <div class="col-md-2">
-                    <a href="/logout" class="text-silenced"> Log out</a> 
+                    <a href="/logout" class="text-danger"> Log out</a> 
             </div>
         </div>
     </div>
