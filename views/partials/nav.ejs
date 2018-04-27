@@ -28,14 +28,16 @@
                 <a class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-circle"></i>
                   
                 </a>
-                <% if(currentLogedUser){%>
+                
                 <div class="dropdown-menu dropdown-menu-right">
+                        <% if(currentLogedUser){%>
                         <button class="dropdown-item">Logged in as <%=currentLogedUser.username%></button>
+                        <%}%> 
                         <a href="/user" class="dropdown-item" >Account </a> 
                         <a href="/logout" class="dropdown-item" >Logout </a> 
                         
                       </div>
-                      <%}%> 
+                   
             </li>
            
             <li class="nav-item">

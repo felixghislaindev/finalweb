@@ -105,8 +105,11 @@
                             <h3 class=" title text-center">Post your comment</h3>   
                             <div class="media media-post">
                                 <a class="float-left author">
+                                    
                                     <div class="avatar">
+                                            <% if(currentLogedUser){%>
                                         <img style="border-radius: 50%;" width="150px"; height="150px"; src="<%=currentLogedUser.avatar%>" alt="">
+                                        <%}%> 
                                     </div>
                                 </a>
                                 <div class="media-body ">
