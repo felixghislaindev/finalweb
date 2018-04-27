@@ -49,8 +49,9 @@
       <section>
             <div class="container">
                 <div class="row">
+                        <div class="card-deck">
                     <%for(var i = 0; i < foundclasses.length;i++){%>
-                        <div class="col-xl-3 col-lg-3 col-md-43 col-sm-6 mb-4">
+                        <div class="col-xl-4 col-lg-4 col-md-3 col-sm-6 mb-4">
                                 <div class="card">
                                     <img src="<%= foundclasses[i].classImage%>" class = "card-img img-fluid" alt="">
                                     <div class="card-img-overlay text-white">
@@ -65,6 +66,7 @@
                         </div>
                      
                       <%}%> 
+                        </div>
                 </div>
             </div>
         </section>
