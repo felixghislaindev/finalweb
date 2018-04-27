@@ -20,6 +20,8 @@ router.get("/blog", function (req, res) {
         console.log(err);
      
       }
+      
+          
     Blog.findById(req.params.id).populate("comments").exec(function(err, foundblog){
     if(err){
       console.log(err);
@@ -30,6 +32,22 @@ router.get("/blog", function (req, res) {
   });
   });
 });
+ //show specific blog 
+ router.get("/blogs/:id", function(req, res){
+ 
+    
+        
+  Blog.findById(req.params.id).populate("comments").exec(function(err, foundblogs){
+  if(err){
+    console.log(err);
+  } else {
+    console.log(foundblog);
+    res.render("./blog/showblog", {foundblogs:foundblogs});
+  }
+});
+});
+
+
 
 
 // tag search 

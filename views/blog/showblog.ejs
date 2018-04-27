@@ -25,7 +25,7 @@
                             
                         <div class="card border-0 ">
                                 <h6 class="text-center recomend">Post that might interest you</h6>
-                            <img class="card-img-top " src="<%= foundblogs[i].blogImage%>" alt="Card image cap">
+                            <a href="/blog/<%= foundblogs[i]._id%>"><img class="card-img-top " src="<%= foundblogs[i].blogImage%>" alt="Card image cap"></a>
                             <div class="card-body blogcard-body">
                               <h5 class="card-title"><%= foundblogs[i].blogTitle%></h5>
                               <p class="card-text blogcard-text"><%= foundblogs[i].blogDescription.substring(0,200) %></p>
