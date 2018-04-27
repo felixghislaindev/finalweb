@@ -14,6 +14,7 @@ var blogSchema = new mongoose.Schema({
     blogDescription: String,
     blogconclusion: String,
     blogAuthor:String,
+    Keywords: String,
     comments:[
         {
             type: mongoose.Schema.Types.ObjectId,

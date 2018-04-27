@@ -205,6 +205,7 @@ router.get("/cms", function (req, res) {
     var blogDescription = req.body.Blogdescription;
     var blogconclusion = req.body.blogconclusion;
     var blogAuthor = req.body.Blogauthor;
+    var Keywords = req.body.Keywords;
     
     var newblog = {
       blogTitle:blogTitle,
@@ -214,7 +215,8 @@ router.get("/cms", function (req, res) {
       blogmainsection: blogmainsection,
       blogDescription: blogDescription,
       blogconclusion: blogconclusion,
-      blogAuthor:blogAuthor
+      blogAuthor:blogAuthor,
+      Keywords:Keywords
     }
     Blog.create(newblog, function(err,newblog){
       if(err){

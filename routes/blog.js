@@ -31,4 +31,58 @@ router.get("/blog", function (req, res) {
   });
 });
 
+
+// tag search 
+router.get("/Gym", function(req,res){
+  Blog.find({Keywords:"Gym"}, function(err,foundblog){
+    if(err){
+      console.log(err);
+    } else{
+      res.render("./blog/blog", {foundblog:foundblog});
+    }
+  })
+})
+
+
+router.get("/Activities", function(req,res){
+  Blog.find({Keywords:"Activities"}, function(err,foundblog){
+    if(err){
+      console.log(err);
+    } else{
+      res.render("./blog/blog", {foundblog:foundblog});
+    }
+  })
+})
+
+router.get("/General", function(req,res){
+  Blog.find({Keywords:"General"}, function(err,foundblog){
+    if(err){
+      console.log(err);
+    } else{
+      res.render("./blog/blog", {foundblog:foundblog});
+    }
+  })
+})
+
+router.get("/Newbies", function(req,res){
+  Blog.find({Keywords:"Newbies"}, function(err,foundblog){
+    if(err){
+      console.log(err);
+    } else{
+      res.render("./blog/blog", {foundblog:foundblog});
+    }
+  })
+})
+
+router.get("/Tips", function(req,res){
+  Blog.find({Keywords:"Tips"}, function(err,foundblog){
+    if(err){
+      console.log(err);
+    } else{
+      res.render("./blog/blog", {foundblog:foundblog});
+    }
+  })
+})
+
+
   module.exports = router;
