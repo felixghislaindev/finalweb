@@ -7,7 +7,10 @@
             <div class="col-lg-8">
                     <h3 class="text-center blogtitle "><%=foundblog.blogTitle%></h3>
                     <img src="<%=foundblog.blogImage%>" class="img-fluid" alt="">
-                    <p class="blogdetail"><%=foundblog.blogDescription%></p>
+                    <p class="blogdetail"><%=foundblog.blogIntro%></p>
+                    <p class="blogdetailmain"><%=foundblog.blogmainsection%></p>
+                    <p class="blogdetailintro"><%=foundblog.blogDescription%></p>
+                    <p class="blogconclusion"><%=foundblog.blogconclusion%></p>
 
             </div>
                 <div class="col-lg-4 " style="padding-left: 60px;">
@@ -15,31 +18,26 @@
                             <span >BY <%=foundblog.blogAuthor%></span>
                             
                     </div>
+                    <%for(var i = 0; i < foundblogs.length;i++){%>
+                        
                     <div class="latepost">
 
-                        
+                            
                         <div class="card border-0 ">
-                                <h6 class="text-center">latest post</h6>
-                            <img class="card-img-top " src="../images/3.jpeg" alt="Card image cap">
+                                <h6 class="text-center recomend">Post that might interest you</h6>
+                            <img class="card-img-top " src="<%= foundblogs[i].blogImage%>" alt="Card image cap">
                             <div class="card-body blogcard-body">
-                              <h5 class="card-title">Card title</h5>
-                              <p class="card-text blogcard-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                              <h5 class="card-title"><%= foundblogs[i].blogTitle%></h5>
+                              <p class="card-text blogcard-text"><%= foundblogs[i].blogDescription.substring(0,200) %></p>
                               <p class="card-text blogcard-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                             </div>
                           </div>
+                          <%if(i >= 1 ){%>
+                            <%break%>
+                            <%}%> 
                         </div>
-                        <div class="">
-
-            
-                            <div class="card border-0 "style="padding-bottom: 30px;">
-                                <img class="card-img-top " src="../images/1.jpeg" alt="Card image cap">
-                                <div class="card-body">
-                                  <h5 class="card-title">Card title</h5>
-                                  <p class="card-text blogcard-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                  <p class="card-text blogcard-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                </div>
-                              </div>
-                            </div>
+                        <%}%>  
+ 
                         
                         
                                
@@ -91,11 +89,11 @@
 
                         <div class="media mb-3">
                             <div class="text-center">
-                                    <img style="border-radius: 50%;" width="100px"; height="100px"; src="../images/6.jpeg" alt="">
-                                <h6 class="mt-1 mb-0 mr-3"><%= foundblog.comments[i].author.username%></h6>
+                                    <img style="border-radius: 50%;" width="100px"; height="100px"; src="<%= foundblog.comments[i].author.avatar%>" alt="">
+                                <h6 class="mt-1 mb-0 mr-3 username"><%= foundblog.comments[i].author.username%></h6>
                             </div>
                             <div class="media-body">
-                                <p class="mt-3 mb-2"><%= foundblog.comments[i].text%></p>
+                                <p class="mt-3 mb-2 comment"><%= foundblog.comments[i].text%></p>
                             </div>
                             
                         </div>
@@ -108,23 +106,21 @@
                             <div class="media media-post">
                                 <a class="float-left author">
                                     <div class="avatar">
-                                        <img style="border-radius: 50%;" width="100px"; height="100px"; src="../images/6.jpeg" alt="">
+                                        <img style="border-radius: 50%;" width="150px"; height="150px"; src="<%=currentLogedUser.avatar%>" alt="">
                                     </div>
                                 </a>
                                 <div class="media-body ">
-                                    <form action="/blogs/<%= foundblog._id%>/comment" method="POST">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="author" name="comment[author]">
+                                        <form action="/blogs/<%= foundblog._id%>/comment" method="POST">
+                                          
+                                                <textarea name="comment[text]" style=" outline:none ;resize: none; max-width:100%; max-height:80px; border:none; border-bottom: 1px solid grey; margin-left: 20px;; line-height:1.5;" class="form-contol" placeholder="write nice comments or go home..." rows="4"></textarea>
+                                          
+                                                <div class="media-footer">
+                                                        <button type="submit" class="btn btn-primary float-right btn-danger">Comment</button>
+                                                    
+                                                </div>
+                                        </form>
+                                            
                                         </div>
-                                            <textarea name="comment[text]" style=" outline:none ;resize: none; max-width:100%; max-height:80px; border:none; border-bottom: 1px solid grey; margin-left: 20px;; line-height:1.5;" class="form-contol" placeholder="write nice comments or go home..." rows="4"></textarea>
-                                      
-                                            <div class="media-footer">
-                                                    <button type="submit" class="btn btn-primary float-right">Comment</button>
-                                                
-                                            </div>
-                                    </form>
-                                        
-                                    </div>
                             </div> 
                           
 

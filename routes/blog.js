@@ -15,14 +15,20 @@ router.get("/blog", function (req, res) {
   
   //show specific blog 
   router.get("/blog/:id", function(req, res){
+    Blog.find({}, function(err, foundblogs){
+      if(err){
+        console.log(err);
+     
+      }
     Blog.findById(req.params.id).populate("comments").exec(function(err, foundblog){
     if(err){
       console.log(err);
     } else {
       console.log(foundblog);
-      res.render("./blog/showblog", {foundblog:foundblog});
+      res.render("./blog/showblog", {foundblog:foundblog,foundblogs:foundblogs});
     }
   });
   });
+});
 
   module.exports = router;

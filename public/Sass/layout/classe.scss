@@ -1,7 +1,10 @@
 
 $cardred:#EA2027;
 $white: #fff;
-
+// classes 
+.clasess{
+        padding-top: 10vh;
+    }
 .classhead{
         font-weight: $medium; 
         
@@ -72,4 +75,26 @@ $white: #fff;
 }
 .healthi{
         padding-left: 8px;
+}
+.list-group-flush{
+        list-style-type: none;
+        li{
+                font-size: 15px;
+                font-weight: $medium;
+                padding-top: 10px;
+                text-align: left;
+        }
+}
+// shopping card
+.lead{
+        padding-bottom: 25px;
+}
+.shoppingcart{
+        padding-bottom: 18vh;
+}
+.shoppingtable{
+        padding-bottom: 18vh;    
+}
+.tb1{
+        padding-bottom: 22vh;     
 }

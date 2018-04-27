@@ -9,7 +9,10 @@ var blogSchema = new mongoose.Schema({
     blogTitle: String,
     imageId:String,
     blogImage: String,
+    blogIntro: String,
+    blogmainsection: String,
     blogDescription: String,
+    blogconclusion: String,
     blogAuthor:String,
     comments:[
         {

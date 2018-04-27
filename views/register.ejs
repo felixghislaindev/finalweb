@@ -13,7 +13,7 @@
                         <strong>Oh snap!</strong> Change a few things up and try submitting again.
                       </div> -->
 
-                      <form action="/register" onsubmit="return Validate()" method="POST" class="login-form needs-validation" novalidate>
+                      <form action="/register" onsubmit="return Validate()" method="POST" class="login-form needs-validation" novalidate enctype="multipart/form-data"required>
                         <div class="col-md-12">
                                 <label for="validationServer01"></label>
                             <input type="text"class="form-control form-control-lg frm-imput" placeholder="FIRST NAME" name="firstname" id="Firstname">
@@ -26,6 +26,11 @@
                             <label for="validationDefaultUsername"></label>
                             <input type="text"class="form-control form-control-lg frm-imput" placeholder="username" name="username" id="Username">
                         </div>
+                        <div class="col-md-12" style="padding-bottom: 45px;">
+                                <label for="image">Profile Picture:</label>
+                                <input type="file"  id="image" name="avatar" placeholder="Class Image" accept="image/*" required>
+                              
+                            </div>
                         <div class="col-md-12">
                             <input type="password"class="form-control form-control-lg frm-imput" placeholder="password" name="password" id="Password">
                         </div>

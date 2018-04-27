@@ -2,7 +2,33 @@ var express = require("express");
 var router = express.Router();
 
 var  passport = require("passport"),
-     User     = require("../models/User");
+     User     = require("../models/User"),
+     Order = require("../models/orders"),
+     Cart = require("../models/ShoppingCart"),
+     multer = require('multer'),
+     cloudinary = require('cloudinary');
+
+     var imgstorage = multer.diskStorage({
+      filename: function(req, file, callback) {
+        callback(null, Date.now() + file.originalname);
+      }
+    });
+    var imgFilter = function (req, file, cb) {
+        // will accept file shown bellow only
+        if (!file.originalname.match(/\.(jpg|jpeg|png|gif)$/i)) {
+            return cb(new Error('will only allow certain type of file!'), false);
+        }
+        cb(null, true);
+    };
+    var upload = multer({ storage: imgstorage, fileFilter: imgFilter});
+    
+    
+    cloudinary.config({ 
+      cloud_name: 'ragefitness', 
+      api_key: "781792735121654", 
+      api_secret:"dRhp7_rcrh1CWbf5-0gdQ535AWU"
+    });
+
   
   // define route for login page
   router.get("/register", function (req, res,) {
@@ -12,7 +38,8 @@ var  passport = require("passport"),
   
   });
   
-  router.post("/register", function(req,res){
+  router.post("/register",upload.single('avatar'), function(req,res){
+    
     // validate data entered in the form 
     req.check("firstname", "Please enter your first").isEmpty();
     req.check("secondname", "Please enter your first").isEmpty();
@@ -29,6 +56,16 @@ var  passport = require("passport"),
 //  } else{
 //   req.session.success = true;
 //  }
+ // add cloudinary img url
+ cloudinary.v2.uploader.upload(req.file.path, function(err, result) {
+  if(err) {
+   
+    return res.redirect('back');
+  }
+  // add cloudinary img url
+  req.body.avatar = result.secure_url;
+  req.body.imageId = result.public_id;
+  console.log(result.public_id);
  
 
     var newUser = new User ({
@@ -36,12 +73,14 @@ var  passport = require("passport"),
       Secondname : req.body.secondname,
       username : req.body.username,
       Telephone : req.body.telephone,
-      Email: req.body.email
+      Email: req.body.email,
+      avatar: req.body.avatar
+
     }); 
   
   User.register(newUser,req.body.password, function(err){
     if(err){
-      console.log(err);
+     
       return res.render("register");
     } else {
       //will log and authenticate the user is register is gone through 
@@ -52,9 +91,11 @@ var  passport = require("passport"),
     }
   });
   });
+});
   
   // define route for login page
   router.get("/login", function (req, res) {
+   
     res.render("login", {message:req.flash("error")});
   });
   // resposible for handling login logic 
@@ -69,10 +110,30 @@ var  passport = require("passport"),
     req.logout();
     res.redirect("/")
   });
-  router.get("/user",function(req,res){
+
+  router.get("/user",checkIfLoggedIn,function(req,res){
+    Order.find({user: req.user}, function(err, orders){
+      if(err){
+        console.log(err);
+      } 
+      else{
+        var cart;
+      orders.forEach(function(order){
+        cart = new Cart(order.cart);
+        order.items = cart.generateArray();
+     
+       
+      })
+      res.render("./Profile/userprofile", {orders:orders});
+      
+      }
+      
+    })
+
+      })
    
-     res.render("./Profile/userprofile", {message : "heloo"});
-   });
+     
+ 
   
   //  middleware 
   // check if a user is logged in 

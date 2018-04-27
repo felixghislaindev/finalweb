@@ -32,7 +32,7 @@
       <!-- partial -->
       <div class="container">
             <div class="content-wrapper">
-                    <h3 class="page-heading mb-4">Website Overview</h3>
+                    <h3 class="page-heading mb-4">Classes Overview</h3>
                     <div class="row">
 
                         <div class="col-xl-3 col-lg-3 col-md-43 col-sm-6 mb-4">
@@ -42,38 +42,32 @@
                                       
                                       </ul>
                         </div>
-                    
-                     
-                        
-                          <div class="col-xl-9 col-lg-9 col-md-43 col-sm-6 mb-4">
-                            <div class="row">
-                                <%for(var i = 0; i < foundclasses.length;i++){%>
-                                <div class="col-xl-3 col-lg-3 col-md-43 col-sm-6 mb-4">
-                                    <div class="card">
-                                        <img src="<%= foundclasses[i].classImage%>" class = "card-img img-fluid" alt="">
-                                        <div class="card-img-overlay text-white">
-                                                
-                                                <h4 id="class-h" class="card-title"><%= foundclasses[i].className%></h4>
-                                                <p id= "class-p"class="card-text"><%= foundclasses[i].classType%></p> 
-                                        </div>
-                                       
-                                    </div>
-                                    <a class="text-danger" href="/cmsclass/<%=foundclasses[i]._id%>/editclass">VIEW/EDIT POST</a>
-                                    
-                            </div>
-                             
-                              <%}%> 
-                        </div>
-                      </div>
-                   
-                      
-                   
-                    </div>
-    
-      
-          
+
        
       </section>
+
+      <section>
+            <div class="container">
+                <div class="row">
+                    <%for(var i = 0; i < foundclasses.length;i++){%>
+                        <div class="col-xl-3 col-lg-3 col-md-43 col-sm-6 mb-4">
+                                <div class="card">
+                                    <img src="<%= foundclasses[i].classImage%>" class = "card-img img-fluid" alt="">
+                                    <div class="card-img-overlay text-white">
+                                            
+                                            <h4 id="class-h" class="card-title name"><%= foundclasses[i].className%></h4>
+                                            <p id= "class-p"class="card-text"><%= foundclasses[i].classType%></p> 
+                                    </div>
+                                   
+                                </div>
+                                <a class="text-danger" href="/cmsclass/<%=foundclasses[i]._id%>/editclass">VIEW/EDIT POST</a>
+                                
+                        </div>
+                     
+                      <%}%> 
+                </div>
+            </div>
+        </section>
 
 
        <!-- Optional JavaScript -->

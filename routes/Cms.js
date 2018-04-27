@@ -200,14 +200,20 @@ router.get("/cms", function (req, res) {
     var blogTitle = req.body.Blogtitle;
     var imageId = req.body.imageId;
     var blogImage = req.body.Blogimage;
+    var blogIntro = req.body.blogIntro;
+    var blogmainsection = req.body.blogmainsection;
     var blogDescription = req.body.Blogdescription;
+    var blogconclusion = req.body.blogconclusion;
     var blogAuthor = req.body.Blogauthor;
     
     var newblog = {
       blogTitle:blogTitle,
       imageId:imageId,
       blogImage:blogImage,
+      blogIntro: blogIntro,
+      blogmainsection: blogmainsection,
       blogDescription: blogDescription,
+      blogconclusion: blogconclusion,
       blogAuthor:blogAuthor
     }
     Blog.create(newblog, function(err,newblog){

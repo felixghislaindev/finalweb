@@ -86,7 +86,13 @@ app.use(function(req,res,next){
 //reaching the home page
 //define the index page route
 app.get("/", function (req, res) {
-  res.render("home");
+  Blog.find({}, function(err, foundblogs){
+    if(err){
+      console.log(err);
+   
+    }
+  res.render("home",{foundblogs:foundblogs});
+})
 });
 
 //define the about page route

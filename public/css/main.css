@@ -444,9 +444,6 @@ th {
   padding-top: 18vh;
   padding-bottom: 8vh; }
 
-.classes {
-  padding-bottom: 10vh; }
-
 .people-row-1 {
   padding-top: 8vh; }
 
@@ -489,6 +486,10 @@ th {
 .our-team {
   padding: 5vh 0; }
 
+.about-us {
+  padding-top: 10vh !important;
+  padding-bottom: 10vh !important; }
+
 .over {
   position: relative;
   text-align: center;
@@ -528,6 +529,16 @@ th {
 
 .sales {
   background-color: yellowgreen; }
+
+.prod {
+  font-size: 16px;
+  color: black !important; }
+
+.name {
+  font-size: 16px;
+  color: white !important;
+  width: 180px;
+  padding-right: 5px; }
 
 .login-form {
   padding-top: 10%; }
@@ -579,6 +590,9 @@ input[type="password"], input[type="password"]:focus {
 
 .detailrow {
   padding-top: 100px; }
+
+.clasess {
+  padding-top: 10vh; }
 
 .classhead {
   font-weight: 700;
@@ -643,6 +657,26 @@ input[type="password"], input[type="password"]:focus {
 .healthi {
   padding-left: 8px; }
 
+.list-group-flush {
+  list-style-type: none; }
+  .list-group-flush li {
+    font-size: 15px;
+    font-weight: 700;
+    padding-top: 10px;
+    text-align: left; }
+
+.lead {
+  padding-bottom: 25px; }
+
+.shoppingcart {
+  padding-bottom: 18vh; }
+
+.shoppingtable {
+  padding-bottom: 18vh; }
+
+.tb1 {
+  padding-bottom: 22vh; }
+
 .blog-intro {
   padding-top: 8vh;
   padding-bottom: 8vh; }
@@ -693,10 +727,34 @@ input[type="password"], input[type="password"]:focus {
   font-size: 15px;
   font-weight: 700; }
 
+.blogdetailmain {
+  padding-top: 20px;
+  line-height: 1.7em;
+  font-size: 18px;
+  text-align: left;
+  font-weight: 700;
+  color: #555; }
+
+.blogdetailintro {
+  padding-top: 20px;
+  line-height: 1.7em;
+  font-size: 19.5px;
+  text-align: left;
+  font-weight: 400;
+  color: #555; }
+
 .blogdetail {
   padding-top: 20px;
   line-height: 1.7em;
   font-size: 16px;
+  text-align: left;
+  font-weight: 400;
+  color: #555; }
+
+.blogconclusion {
+  padding-top: 20px;
+  line-height: 1.7em;
+  font-size: 17px;
   text-align: left;
   font-weight: 400;
   color: #555; }
@@ -706,6 +764,12 @@ input[type="password"], input[type="password"]:focus {
   font-weight: 700;
   color: #000;
   font-size: 50px; }
+
+.recomend {
+  padding-bottom: 20px;
+  font-weight: 700;
+  color: #000;
+  font-size: 18px; }
 
 .latepost {
   padding-top: 50px; }
@@ -719,6 +783,32 @@ input[type="password"], input[type="password"]:focus {
 
 .blogcard-text {
   font-size: 15px;
+  font-weight: 700; }
+
+.title {
+  padding-bottom: 40px;
+  font-size: 20px;
+  font-weight: 700; }
+
+.media-post {
+  padding-bottom: 65px; }
+
+.avatar {
+  padding-top: 15px; }
+
+.media-body {
+  padding-top: 45px; }
+
+.username {
+  padding-top: 10px;
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 700; }
+
+.comment {
+  padding-left: 70px;
+  color: #555;
+  font-size: 18px;
   font-weight: 700; }
 
 .catlink {
@@ -801,9 +891,6 @@ body {
   font-size: 140%;
   padding-left: 55px;
   text-shadow: 1px 1px 10px #000; }
-
-.clasess {
-  padding-top: 50px; }
 
 .row-description h3 {
   color: #dc3545;
